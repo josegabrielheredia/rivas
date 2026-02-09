@@ -12,13 +12,31 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
 
-// 🔥 Persistencia offline (CLAVE)
-firebase.firestore().enablePersistence()
-  .catch(err => {
-    console.warn("Persistencia no disponible:", err.code);
-  });
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+// Persistencia offline
+firebase.firestore().enablePersistence().catch(err => {
+  console.warn("Persistencia no disponible:", err.code);
+});
+
+
+/* ================================
+   AUTH ANÓNIMO (CLAVE)
+================================ */
+
+let currentUID = null;
+
+auth.signInAnonymously().catch(err => {
+  console.error("Error auth:", err);
+});
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    currentUID = user.uid;
+  }
+});
 
 
 /* ================================
@@ -38,6 +56,7 @@ document.documentElement.style.scrollBehavior = "smooth";
 ================================ */
 
 const sections = document.querySelectorAll("section");
+
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -60,14 +79,16 @@ document.querySelectorAll("video").forEach(video => {
 
   new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      entry.isIntersecting ? video.play().catch(()=>{}) : video.pause();
+      entry.isIntersecting
+        ? video.play().catch(() => {})
+        : video.pause();
     });
   }, { threshold: 0.4 }).observe(video);
 });
 
 
 /* ================================
-   HERO TEXTO
+   HERO TEXTO ROTATIVO
 ================================ */
 
 const textos = [
@@ -104,14 +125,7 @@ const list = document.getElementById("commentsList");
 const nombreInput = document.getElementById("nombre");
 const mensajeInput = document.getElementById("mensaje");
 
-// 🆔 ID local persistente
-let userId = localStorage.getItem("userId");
-if (!userId) {
-  userId = crypto.randomUUID();
-  localStorage.setItem("userId", userId);
-}
-
-// ⭐ Rating
+// ⭐ Selección de estrellas
 stars.forEach((star, index) => {
   star.addEventListener("click", () => {
     selectedRating = index + 1;
@@ -126,6 +140,7 @@ stars.forEach((star, index) => {
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
+  if (!currentUID) return alert("Espera un momento…");
   if (!selectedRating) return alert("Selecciona estrellas ⭐");
   if (!nombreInput.value.trim() || !mensajeInput.value.trim())
     return alert("Completa los campos");
@@ -134,7 +149,7 @@ form.addEventListener("submit", async e => {
     nombre: nombreInput.value.trim(),
     mensaje: mensajeInput.value.trim(),
     rating: selectedRating,
-    userId,
+    uid: currentUID,
     fecha: firebase.firestore.FieldValue.serverTimestamp()
   });
 
@@ -143,7 +158,7 @@ form.addEventListener("submit", async e => {
   selectedRating = 0;
 });
 
-// 📥 Listener REAL (no desaparece)
+// 📥 Cargar comentarios (PÚBLICO)
 db.collection("comentarios")
   .orderBy("fecha", "desc")
   .onSnapshot(snapshot => {
@@ -158,16 +173,21 @@ db.collection("comentarios")
         <strong>${c.nombre}</strong>
         <div class="stars">${"★".repeat(c.rating)}</div>
         <p>${c.mensaje}</p>
-        ${c.userId === userId ? `<button data-id="${doc.id}">Eliminar</button>` : ""}
+        ${
+          c.uid === currentUID
+            ? `<button class="delete-btn" data-id="${doc.id}">Eliminar</button>`
+            : ""
+        }
       `;
 
       list.appendChild(div);
     });
   });
 
-// 🗑️ Eliminar
-list.addEventListener("click", e => {
-  if (e.target.tagName === "BUTTON") {
-    db.collection("comentarios").doc(e.target.dataset.id).delete();
+// 🗑️ Eliminar comentario (solo dueño)
+list.addEventListener("click", async e => {
+  if (e.target.classList.contains("delete-btn")) {
+    const id = e.target.dataset.id;
+    await db.collection("comentarios").doc(id).delete();
   }
 });
