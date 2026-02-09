@@ -405,3 +405,90 @@ section.show .card:nth-child(9){transition-delay:.45s}
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =========================
+   COMENTARIOS
+========================= */
+.comentarios {
+  padding: 90px 8%;
+  background: #f4f1f8;
+  text-align: center;
+}
+
+.comment-form {
+  max-width: 500px;
+  margin: 0 auto 50px;
+  display: grid;
+  gap: 14px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.comment-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.rating span {
+  color: #ccc;
+}
+
+.rating span.active {
+  color: #f5b301;
+}
+
+.comment-form button {
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg,#c08b5c,#e2b6ff);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.comments-list {
+  max-width: 700px;
+  margin: auto;
+  display: grid;
+  gap: 18px;
+}
+
+.comment {
+  background: white;
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+  text-align: left;
+}
+
+.comment strong {
+  display: block;
+}
+
+.comment .stars {
+  color: #f5b301;
+  margin: 6px 0;
+}
+
+.comment button {
+  background: none;
+  border: none;
+  color: crimson;
+  cursor: pointer;
+  font-size: 13px;
+}
