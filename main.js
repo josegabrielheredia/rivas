@@ -1,45 +1,4 @@
 /* ================================
-   FIREBASE CONFIG
-================================ */
-
-const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROYECTO.firebaseapp.com",
-  projectId: "TU_PROYECTO",
-  storageBucket: "TU_PROYECTO.appspot.com",
-  messagingSenderId: "XXXXXXXX",
-  appId: "XXXXXXXX"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-const auth = firebase.auth();
-
-// Persistencia offline
-firebase.firestore().enablePersistence().catch(err => {
-  console.warn("Persistencia no disponible:", err.code);
-});
-
-
-/* ================================
-   AUTH ANÓNIMO (CLAVE)
-================================ */
-
-let currentUID = null;
-
-auth.signInAnonymously().catch(err => {
-  console.error("Error auth:", err);
-});
-
-auth.onAuthStateChanged(user => {
-  if (user) {
-    currentUID = user.uid;
-  }
-});
-
-
-/* ================================
    FIX SCROLL
 ================================ */
 
@@ -57,16 +16,18 @@ document.documentElement.style.scrollBehavior = "smooth";
 
 const sections = document.querySelectorAll("section");
 
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      sectionObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
+if (sections.length) {
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-sections.forEach(section => sectionObserver.observe(section));
+  sections.forEach(section => sectionObserver.observe(section));
+}
 
 
 /* ================================
@@ -98,25 +59,26 @@ const textos = [
   "Tu espacio de bienestar"
 ];
 
-let i = 0;
+let textoIndex = 0;
 const heroTitle = document.querySelector(".hero-content h2");
 
 if (heroTitle) {
   setInterval(() => {
     heroTitle.classList.remove("text-show");
     setTimeout(() => {
-      heroTitle.textContent = textos[i];
+      heroTitle.textContent = textos[textoIndex];
       heroTitle.classList.add("text-show");
-      i = (i + 1) % textos.length;
+      textoIndex = (textoIndex + 1) % textos.length;
     }, 250);
   }, 3500);
 }
 
 
 /* ================================
-   COMENTARIOS – FIRESTORE
+   COMENTARIOS – POSTGRESQL API
 ================================ */
 
+const API = "http://localhost:3000"; // cambia en producción
 let selectedRating = 0;
 
 const stars = document.querySelectorAll(".rating span");
@@ -125,7 +87,8 @@ const list = document.getElementById("commentsList");
 const nombreInput = document.getElementById("nombre");
 const mensajeInput = document.getElementById("mensaje");
 
-// ⭐ Selección de estrellas
+
+/* ⭐ Selección de estrellas */
 stars.forEach((star, index) => {
   star.addEventListener("click", () => {
     selectedRating = index + 1;
@@ -136,36 +99,57 @@ stars.forEach((star, index) => {
   });
 });
 
-// 📤 Enviar comentario
-form.addEventListener("submit", async e => {
-  e.preventDefault();
 
-  if (!currentUID) return alert("Espera un momento…");
-  if (!selectedRating) return alert("Selecciona estrellas ⭐");
-  if (!nombreInput.value.trim() || !mensajeInput.value.trim())
-    return alert("Completa los campos");
+/* 📤 Enviar comentario */
+if (form) {
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
 
-  await db.collection("comentarios").add({
-    nombre: nombreInput.value.trim(),
-    mensaje: mensajeInput.value.trim(),
-    rating: selectedRating,
-    uid: currentUID,
-    fecha: firebase.firestore.FieldValue.serverTimestamp()
+    if (!selectedRating) return alert("Selecciona estrellas ⭐");
+    if (!nombreInput.value.trim() || !mensajeInput.value.trim()) {
+      return alert("Completa los campos");
+    }
+
+    try {
+      const res = await fetch(`${API}/comentarios`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          nombre: nombreInput.value.trim(),
+          mensaje: mensajeInput.value.trim(),
+          rating: selectedRating
+        })
+      });
+
+      if (!res.ok) throw new Error("Error al enviar");
+
+      form.reset();
+      stars.forEach(s => s.classList.remove("active"));
+      selectedRating = 0;
+      cargarComentarios();
+
+    } catch (err) {
+      console.error(err);
+      alert("No se pudo enviar el comentario");
+    }
   });
+}
 
-  form.reset();
-  stars.forEach(s => s.classList.remove("active"));
-  selectedRating = 0;
-});
 
-// 📥 Cargar comentarios (PÚBLICO)
-db.collection("comentarios")
-  .orderBy("fecha", "desc")
-  .onSnapshot(snapshot => {
+/* 📥 Cargar comentarios */
+async function cargarComentarios() {
+  if (!list) return;
+
+  try {
+    const res = await fetch(`${API}/comentarios`, {
+      credentials: "include"
+    });
+
+    const comentarios = await res.json();
     list.innerHTML = "";
 
-    snapshot.forEach(doc => {
-      const c = doc.data();
+    comentarios.forEach(c => {
       const div = document.createElement("div");
       div.className = "comment";
 
@@ -173,21 +157,39 @@ db.collection("comentarios")
         <strong>${c.nombre}</strong>
         <div class="stars">${"★".repeat(c.rating)}</div>
         <p>${c.mensaje}</p>
-        ${
-          c.uid === currentUID
-            ? `<button class="delete-btn" data-id="${doc.id}">Eliminar</button>`
-            : ""
-        }
+        ${c.esAutor ? `<button class="delete-btn" data-id="${c.id}">Eliminar</button>` : ""}
       `;
 
       list.appendChild(div);
     });
-  });
 
-// 🗑️ Eliminar comentario (solo dueño)
-list.addEventListener("click", async e => {
-  if (e.target.classList.contains("delete-btn")) {
-    const id = e.target.dataset.id;
-    await db.collection("comentarios").doc(id).delete();
+  } catch (err) {
+    console.error("Error cargando comentarios:", err);
   }
-});
+}
+
+
+/* 🗑️ Eliminar comentario (solo autor) */
+if (list) {
+  list.addEventListener("click", async e => {
+    if (!e.target.classList.contains("delete-btn")) return;
+
+    const id = e.target.dataset.id;
+
+    try {
+      await fetch(`${API}/comentarios/${id}`, {
+        method: "DELETE",
+        credentials: "include"
+      });
+
+      cargarComentarios();
+
+    } catch (err) {
+      console.error("Error eliminando comentario:", err);
+    }
+  });
+}
+
+
+/* 🚀 INIT */
+cargarComentarios();
