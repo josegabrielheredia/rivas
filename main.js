@@ -1,195 +1,166 @@
+// ================================
+// FIREBASE CONFIG (COMPAT)
+// ================================
+const firebaseConfig = {
+  apiKey: "AIzaSyCAcGZUDIwb5Uq-jAOQ3wl90cx1Z6afdJo",
+  authDomain: "rivas-gonzalez-salon.firebaseapp.com",
+  projectId: "rivas-gonzalez-salon",
+  storageBucket: "rivas-gonzalez-salon.firebasestorage.app",
+  messagingSenderId: "196826658505",
+  appId: "1:196826658505:web:70b9997cee08d28d00ff18"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 /* ================================
-   FIX SCROLL
+   DOM READY
 ================================ */
+document.addEventListener("DOMContentLoaded", () => {
 
-if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
-window.addEventListener("load", () => window.scrollTo(0, 0));
-document.body.style.overflowX = "hidden";
-document.documentElement.style.scrollBehavior = "smooth";
+  /* ================================
+     FIX SCROLL
+  ================================ */
+  try {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+    document.body.style.overflowX = "hidden";
+    document.documentElement.style.scrollBehavior = "smooth";
+  } catch (e) {}
 
+  /* ================================
+     ANIMACIONES SECCIONES
+  ================================ */
+  try {
+    const sections = document.querySelectorAll("section");
 
-/* ================================
-   ANIMACIONES
-================================ */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
 
-const sections = document.querySelectorAll("section");
+    sections.forEach(section => observer.observe(section));
+  } catch (e) {}
 
-if (sections.length) {
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        sectionObserver.unobserve(entry.target);
+  /* ================================
+     VIDEO OBSERVER
+  ================================ */
+  try {
+    document.querySelectorAll("video").forEach(video => {
+      video.muted = true;
+      video.playsInline = true;
+
+      const videoObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.4 });
+
+      videoObserver.observe(video);
+    });
+  } catch (e) {}
+
+  /* ================================
+     HERO TEXTO ROTATIVO
+  ================================ */
+  try {
+    const textos = [
+      "Realza tu belleza natural",
+      "Donde nace tu mejor versión",
+      "Belleza, elegancia y cuidado",
+      "Tu espacio de bienestar"
+    ];
+
+    let i = 0;
+    const heroTitle = document.querySelector(".hero-content h2");
+
+    if (heroTitle) {
+      heroTitle.classList.add("text-show");
+      setInterval(() => {
+        heroTitle.classList.remove("text-show");
+        setTimeout(() => {
+          heroTitle.textContent = textos[i];
+          heroTitle.classList.add("text-show");
+          i = (i + 1) % textos.length;
+        }, 250);
+      }, 3500);
+    }
+  } catch (e) {}
+
+  /* ================================
+     COMENTARIOS (FIRESTORE)
+  ================================ */
+  const form = document.getElementById("commentForm");
+  const commentsList = document.getElementById("commentsList");
+  const stars = document.querySelectorAll(".rating span");
+
+  let rating = 0;
+
+  // ⭐ estrellas
+  stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      rating = index + 1;
+      stars.forEach(s => s.classList.remove("active"));
+      for (let i = 0; i < rating; i++) {
+        stars[i].classList.add("active");
       }
     });
-  }, { threshold: 0.15 });
-
-  sections.forEach(section => sectionObserver.observe(section));
-}
-
-
-/* ================================
-   VIDEO OBSERVER
-================================ */
-
-document.querySelectorAll("video").forEach(video => {
-  video.muted = true;
-  video.playsInline = true;
-
-  new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      entry.isIntersecting
-        ? video.play().catch(() => {})
-        : video.pause();
-    });
-  }, { threshold: 0.4 }).observe(video);
-});
-
-
-/* ================================
-   HERO TEXTO ROTATIVO
-================================ */
-
-const textos = [
-  "Realza tu belleza natural",
-  "Donde nace tu mejor versión",
-  "Belleza, elegancia y cuidado",
-  "Tu espacio de bienestar"
-];
-
-let textoIndex = 0;
-const heroTitle = document.querySelector(".hero-content h2");
-
-if (heroTitle) {
-  setInterval(() => {
-    heroTitle.classList.remove("text-show");
-    setTimeout(() => {
-      heroTitle.textContent = textos[textoIndex];
-      heroTitle.classList.add("text-show");
-      textoIndex = (textoIndex + 1) % textos.length;
-    }, 250);
-  }, 3500);
-}
-
-
-/* ================================
-   COMENTARIOS – POSTGRESQL API
-================================ */
-
-const API = "http://localhost:3000"; // cambia en producción
-let selectedRating = 0;
-
-const stars = document.querySelectorAll(".rating span");
-const form = document.getElementById("commentForm");
-const list = document.getElementById("commentsList");
-const nombreInput = document.getElementById("nombre");
-const mensajeInput = document.getElementById("mensaje");
-
-
-/* ⭐ Selección de estrellas */
-stars.forEach((star, index) => {
-  star.addEventListener("click", () => {
-    selectedRating = index + 1;
-    stars.forEach(s => s.classList.remove("active"));
-    for (let i = 0; i < selectedRating; i++) {
-      stars[i].classList.add("active");
-    }
   });
-});
 
-
-/* 📤 Enviar comentario */
-if (form) {
-  form.addEventListener("submit", async e => {
+  // 📤 enviar comentario
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!selectedRating) return alert("Selecciona estrellas ⭐");
-    if (!nombreInput.value.trim() || !mensajeInput.value.trim()) {
-      return alert("Completa los campos");
+    const nombre = document.getElementById("nombre").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    if (!nombre || !mensaje || rating === 0) {
+      alert("Completa todos los campos y selecciona estrellas ⭐");
+      return;
     }
 
     try {
-      const res = await fetch(`${API}/comentarios`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          nombre: nombreInput.value.trim(),
-          mensaje: mensajeInput.value.trim(),
-          rating: selectedRating
-        })
+      await db.collection("comentarios").add({
+        nombre,
+        mensaje,
+        estrellas: rating,
+        fecha: firebase.firestore.FieldValue.serverTimestamp()
       });
-
-      if (!res.ok) throw new Error("Error al enviar");
 
       form.reset();
+      rating = 0;
       stars.forEach(s => s.classList.remove("active"));
-      selectedRating = 0;
-      cargarComentarios();
-
     } catch (err) {
-      console.error(err);
-      alert("No se pudo enviar el comentario");
+      console.error("Error guardando comentario:", err);
     }
   });
-}
 
+  // 👀 mostrar comentarios en tiempo real
+  db.collection("comentarios")
+    .orderBy("fecha", "desc")
+    .onSnapshot(snapshot => {
+      commentsList.innerHTML = "";
 
-/* 📥 Cargar comentarios */
-async function cargarComentarios() {
-  if (!list) return;
-
-  try {
-    const res = await fetch(`${API}/comentarios`, {
-      credentials: "include"
-    });
-
-    const comentarios = await res.json();
-    list.innerHTML = "";
-
-    comentarios.forEach(c => {
-      const div = document.createElement("div");
-      div.className = "comment";
-
-      div.innerHTML = `
-        <strong>${c.nombre}</strong>
-        <div class="stars">${"★".repeat(c.rating)}</div>
-        <p>${c.mensaje}</p>
-        ${c.esAutor ? `<button class="delete-btn" data-id="${c.id}">Eliminar</button>` : ""}
-      `;
-
-      list.appendChild(div);
-    });
-
-  } catch (err) {
-    console.error("Error cargando comentarios:", err);
-  }
-}
-
-
-/* 🗑️ Eliminar comentario (solo autor) */
-if (list) {
-  list.addEventListener("click", async e => {
-    if (!e.target.classList.contains("delete-btn")) return;
-
-    const id = e.target.dataset.id;
-
-    try {
-      await fetch(`${API}/comentarios/${id}`, {
-        method: "DELETE",
-        credentials: "include"
+      snapshot.forEach(doc => {
+        const c = doc.data();
+        commentsList.innerHTML += `
+          <div class="comment">
+            <strong>${c.nombre}</strong>
+            <div class="stars">${"★".repeat(c.estrellas)}</div>
+            <p>${c.mensaje}</p>
+          </div>
+        `;
       });
+    });
 
-      cargarComentarios();
-
-    } catch (err) {
-      console.error("Error eliminando comentario:", err);
-    }
-  });
-}
-
-
-/* 🚀 INIT */
-cargarComentarios();
+});
