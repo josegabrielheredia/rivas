@@ -2,30 +2,30 @@
    VARIABLES
 ========================= */
 :root {
-  --ink: #1b1116;
-  --ink-2: #382630;
-  --muted: #725f67;
-  --paper: #fff8f4;
-  --soft: #f7e9eb;
-  --blush: #f3dde1;
-  --wine-soft: #ead4d8;
-  --cream: #fff1dc;
-  --gold: #b77f51;
-  --gold-2: #efc88f;
-  --rose: #a65b6a;
-  --rose-2: #d9a2ad;
-  --plum: #3b2230;
-  --plum-deep: #171015;
+  --ink: #181015;
+  --ink-2: #32202a;
+  --muted: #705d65;
+  --paper: #fff8f2;
+  --soft: #f8eaeb;
+  --blush: #efd5da;
+  --wine-soft: #dcb4bd;
+  --cream: #fff0d8;
+  --gold: #b87d4b;
+  --gold-2: #f0c78c;
+  --rose: #a95c6b;
+  --rose-2: #dfabb3;
+  --plum: #412535;
+  --plum-deep: #130d11;
   --green: #2f7d59;
   --white: #ffffff;
-  --line: rgba(93, 66, 75, .14);
-  --line-strong: rgba(93, 66, 75, .22);
+  --line: rgba(93, 66, 75, .13);
+  --line-strong: rgba(93, 66, 75, .24);
   --glass: rgba(255, 255, 255, .74);
   --surface: rgba(255, 255, 255, .86);
   --surface-soft: rgba(255, 248, 244, .72);
-  --shadow-soft: 0 18px 48px rgba(55, 35, 43, .10);
-  --shadow-strong: 0 28px 82px rgba(24, 17, 22, .26);
-  --shadow-lift: 0 34px 90px rgba(42, 25, 34, .18);
+  --shadow-soft: 0 18px 50px rgba(55, 35, 43, .10);
+  --shadow-strong: 0 30px 90px rgba(24, 17, 22, .28);
+  --shadow-lift: 0 34px 90px rgba(42, 25, 34, .20);
   --radius: 8px;
   --max: 1180px;
 }
@@ -48,9 +48,8 @@ body {
   min-width: 320px;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 12% 28%, rgba(239, 200, 143, .12), transparent 24rem),
-    radial-gradient(circle at 92% 62%, rgba(166, 91, 106, .12), transparent 28rem),
-    linear-gradient(180deg, #21131a 0%, #fff8f4 18%, #f3dde1 58%, #171015 100%);
+    linear-gradient(90deg, rgba(255, 248, 242, .42), transparent 18%, transparent 82%, rgba(255, 248, 242, .42)),
+    linear-gradient(180deg, #130d11 0%, #fff8f2 18%, #f1d8dc 58%, #130d11 100%);
   color: var(--ink);
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
@@ -208,10 +207,10 @@ main {
   bottom: clamp(14px, 3vw, 26px);
   z-index: 1000;
   display: grid;
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   place-items: center;
-  border: 3px solid rgba(255, 255, 255, .92);
+  border: 2px solid rgba(255, 255, 255, .92);
   border-radius: 50%;
   background: linear-gradient(135deg, #25d366, #168a45);
   box-shadow: 0 18px 42px rgba(16, 111, 55, .36), 0 0 0 8px rgba(37, 211, 102, .08);
@@ -231,7 +230,7 @@ main {
    HERO
 ========================= */
 .hero {
-  min-height: 66svh;
+  min-height: 70svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -245,8 +244,8 @@ main {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(90deg, rgba(15, 9, 13, .94) 0%, rgba(31, 19, 26, .66) 46%, rgba(31, 19, 26, .22) 100%),
-    linear-gradient(180deg, rgba(15, 9, 13, .18) 0%, rgba(42, 25, 34, .70) 78%, rgba(75, 45, 57, .54) 100%);
+    linear-gradient(90deg, rgba(13, 8, 11, .96) 0%, rgba(37, 22, 30, .70) 45%, rgba(37, 22, 30, .22) 100%),
+    linear-gradient(180deg, rgba(13, 8, 11, .14) 0%, rgba(48, 28, 39, .62) 72%, rgba(91, 55, 68, .50) 100%);
 }
 
 .hero::after {
@@ -264,26 +263,26 @@ main {
 .hero-header {
   position: relative;
   z-index: 5;
-  width: min(calc(100% - 40px), 1320px);
-  margin: 22px auto 0;
+  width: min(calc(100% - 40px), 1260px);
+  margin: 20px auto 0;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: clamp(18px, 3vw, 32px);
-  padding: 8px 4px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 999px;
+  background: rgba(23, 15, 20, .18);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(14px);
 }
 
 .hero-header::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -10px;
-  width: min(520px, 52vw);
+  bottom: -13px;
+  width: min(420px, 44vw);
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(239, 200, 143, .32), transparent);
   transform: translateX(-50%);
@@ -294,7 +293,7 @@ main {
   align-items: center;
   min-width: max-content;
   gap: 10px;
-  padding: 4px 0;
+  padding: 3px 0;
   background: transparent;
   border: 0;
   font-weight: 700;
@@ -307,7 +306,7 @@ main {
 }
 
 .logo img {
-  width: clamp(52px, 6vw, 66px);
+  width: clamp(48px, 5.6vw, 62px);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .28));
 }
 
@@ -322,7 +321,7 @@ main {
 .nav {
   display: flex;
   justify-content: center;
-  gap: clamp(6px, 1vw, 12px);
+  gap: clamp(4px, .7vw, 8px);
   width: max-content;
   max-width: 100%;
   justify-self: center;
@@ -334,13 +333,13 @@ main {
 
 .nav a {
   position: relative;
-  min-height: 36px;
+  min-height: 38px;
   display: inline-grid;
   place-items: center;
   border-radius: 999px;
-  padding: 8px clamp(10px, 1.4vw, 17px);
+  padding: 9px clamp(11px, 1.3vw, 16px);
   color: rgba(255, 255, 255, .88);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
   text-shadow: 0 8px 22px rgba(0, 0, 0, .62);
@@ -376,14 +375,14 @@ main {
 .hero-redes {
   display: flex;
   justify-self: end;
-  gap: 8px;
+  gap: 4px;
 }
 
 .hero-redes a,
 .footer-social-clean a {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   place-items: center;
   border: 0;
   border-radius: 50%;
@@ -411,23 +410,23 @@ main {
   z-index: 2;
   width: min(var(--max), 100%);
   margin: 0 auto;
-  padding: clamp(42px, 5.4vw, 70px) clamp(20px, 5vw, 72px) clamp(42px, 5vw, 60px);
+  padding: clamp(54px, 6.6vw, 92px) clamp(20px, 5vw, 72px) clamp(54px, 6vw, 76px);
 }
 
 .hero-content h1 {
-  max-width: 720px;
+  max-width: 760px;
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(48px, 7.4vw, 84px);
-  line-height: .96;
+  font-size: clamp(52px, 7.8vw, 92px);
+  line-height: .92;
   text-wrap: balance;
   text-shadow: 0 22px 62px rgba(0, 0, 0, .50);
 }
 
 .hero-content p {
   max-width: 620px;
-  margin-top: 22px;
+  margin-top: 24px;
   color: rgba(255, 255, 255, .88);
-  font-size: clamp(16px, 2vw, 19px);
+  font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.75;
   text-shadow: 0 10px 30px rgba(0, 0, 0, .35);
 }
@@ -482,8 +481,8 @@ main {
    SECTION HEADINGS
 ========================= */
 .section-heading {
-  width: min(760px, 100%);
-  margin: 0 auto clamp(32px, 4vw, 52px);
+  width: min(820px, 100%);
+  margin: 0 auto clamp(34px, 4vw, 56px);
   text-align: center;
 }
 
@@ -504,7 +503,7 @@ main {
 .footer-brand h2 {
   font-family: "Playfair Display", Georgia, serif;
   color: var(--ink);
-  font-size: clamp(34px, 5vw, 52px);
+  font-size: clamp(36px, 5vw, 56px);
   line-height: 1.04;
   text-wrap: balance;
 }
@@ -524,14 +523,13 @@ main {
    SERVICIOS
 ========================= */
 .servicios {
-  margin-top: -34px;
+  margin-top: -42px;
   overflow: hidden;
-  padding: clamp(62px, 6vw, 82px) clamp(18px, 5vw, 72px) clamp(76px, 9vw, 112px);
+  padding: clamp(72px, 7vw, 96px) clamp(18px, 5vw, 72px) clamp(82px, 9vw, 120px);
   background:
-    radial-gradient(ellipse at 50% -8%, rgba(83, 50, 63, .16), transparent 36%),
-    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .13), transparent 30%),
-    linear-gradient(90deg, rgba(255, 248, 244, .72), transparent 18%, transparent 82%, rgba(255, 248, 244, .72)),
-    linear-gradient(180deg, #f8ecee 0%, #fff8f4 24%, #fffaf7 50%, #f6e7ea 100%);
+    linear-gradient(180deg, rgba(75, 45, 57, .16) 0%, rgba(255, 248, 242, 0) 12%),
+    linear-gradient(90deg, rgba(255, 248, 242, .78), transparent 20%, transparent 80%, rgba(255, 248, 242, .78)),
+    linear-gradient(180deg, #f9ecee 0%, #fff8f2 22%, #fffaf6 52%, #f3dfe3 100%);
   z-index: 2;
 }
 
@@ -539,32 +537,32 @@ main {
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  height: 94px;
+  height: 118px;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(57, 34, 46, .10), rgba(255, 248, 244, 0) 76%),
-    linear-gradient(90deg, transparent 0%, rgba(239, 200, 143, .18) 42%, rgba(236, 184, 195, .16) 50%, rgba(239, 200, 143, .18) 58%, transparent 100%);
+    linear-gradient(180deg, rgba(57, 34, 46, .12), rgba(255, 248, 242, 0) 74%),
+    linear-gradient(90deg, transparent 0%, rgba(240, 199, 140, .18) 42%, rgba(223, 171, 179, .18) 50%, rgba(240, 199, 140, .18) 58%, transparent 100%);
   background-size: 100% 100%, 220% 100%;
   animation: transitionSweep 8s ease-in-out infinite alternate;
 }
 
 .servicios-grid {
-  width: min(var(--max), 100%);
+  width: min(1160px, 100%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(18px, 2vw, 24px);
+  gap: clamp(16px, 1.8vw, 22px);
 }
 
 .card {
   position: relative;
-  min-height: clamp(340px, 30vw, 390px);
+  min-height: clamp(350px, 31vw, 410px);
   aspect-ratio: 3 / 4.05;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, .86);
-  box-shadow: 0 18px 44px rgba(59, 39, 47, .13), inset 0 1px 0 rgba(255, 255, 255, .22);
+  border: 1px solid rgba(255, 255, 255, .92);
+  box-shadow: 0 18px 52px rgba(59, 39, 47, .12), inset 0 1px 0 rgba(255, 255, 255, .22);
   isolation: isolate;
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
@@ -585,7 +583,7 @@ main {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(23, 17, 20, .02) 0%, rgba(23, 17, 20, .06) 35%, rgba(23, 17, 20, .90) 100%),
+    linear-gradient(180deg, rgba(23, 17, 20, .02) 0%, rgba(23, 17, 20, .04) 32%, rgba(23, 17, 20, .92) 100%),
     linear-gradient(90deg, rgba(23, 17, 20, .24), transparent 58%),
     linear-gradient(0deg, rgba(192, 139, 92, .18), transparent 42%);
   transition: opacity .3s ease;
@@ -618,7 +616,7 @@ main {
   right: 0;
   bottom: 0;
   z-index: 2;
-  padding: 24px 22px;
+  padding: 26px 22px;
   color: var(--white);
 }
 
@@ -649,13 +647,12 @@ main {
 ========================= */
 .cta-band {
   padding: 0 clamp(18px, 5vw, 72px);
-  background:
-    linear-gradient(180deg, #f6e7ea 0%, #eed6db 100%);
+  background: linear-gradient(180deg, #f3dfe3 0%, #ead0d6 100%);
 }
 
 .cta-inner {
   position: relative;
-  width: min(var(--max), 100%);
+  width: min(1160px, 100%);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -663,9 +660,9 @@ main {
   gap: 30px;
   border: 1px solid rgba(255, 255, 255, .13);
   border-radius: var(--radius);
-  padding: clamp(30px, 4.4vw, 48px);
+  padding: clamp(34px, 4.8vw, 54px);
   background:
-    linear-gradient(135deg, rgba(74, 44, 58, .97), rgba(25, 16, 21, .98)),
+    linear-gradient(135deg, rgba(78, 45, 60, .97), rgba(19, 13, 17, .98)),
     url("footer.jpg") center / cover;
   color: var(--white);
   box-shadow: 0 30px 80px rgba(47, 28, 38, .22);
@@ -701,14 +698,14 @@ main {
    ABOUT
 ========================= */
 .nosotros {
-  padding: clamp(78px, 9vw, 112px) clamp(18px, 5vw, 72px);
+  padding: clamp(82px, 9vw, 118px) clamp(18px, 5vw, 72px);
   background:
-    radial-gradient(circle at 82% 16%, rgba(239, 200, 143, .13), transparent 23rem),
-    linear-gradient(180deg, #eed6db 0%, #fff8f4 100%);
+    linear-gradient(90deg, rgba(255, 248, 242, .52), transparent 18%, transparent 82%, rgba(255, 248, 242, .52)),
+    linear-gradient(180deg, #ead0d6 0%, #fff8f2 100%);
 }
 
 .about-layout {
-  width: min(var(--max), 100%);
+  width: min(1160px, 100%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
@@ -740,10 +737,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(93, 66, 75, .11);
   border-radius: var(--radius);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(255, 250, 247, .78));
+  background: linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(255, 248, 242, .80));
   padding: 30px 24px;
   box-shadow: 0 16px 38px rgba(55, 35, 43, .08);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
@@ -793,15 +789,14 @@ main {
    COMENTARIOS
 ========================= */
 .comentarios {
-  padding: clamp(78px, 9vw, 112px) clamp(18px, 5vw, 72px);
+  padding: clamp(82px, 9vw, 118px) clamp(18px, 5vw, 72px);
   background:
-    radial-gradient(circle at 22% 18%, rgba(239, 200, 143, .12), transparent 24rem),
-    linear-gradient(180deg, #fff8f4 0%, #f8ecee 48%, #ead4d8 78%, #d8b4bd 100%);
+    linear-gradient(180deg, #fff8f2 0%, #f9edef 48%, #e7cbd2 78%, #cda0aa 100%);
   text-align: center;
 }
 
 .comment-form {
-  width: min(560px, 100%);
+  width: min(590px, 100%);
   display: grid;
   gap: 14px;
   margin: 0 auto 48px;
@@ -912,12 +907,10 @@ main {
   position: relative;
   overflow: hidden;
   margin-top: -1px;
-  padding: clamp(74px, 8vw, 102px) clamp(18px, 5vw, 72px) 34px;
+  padding: clamp(82px, 8vw, 112px) clamp(18px, 5vw, 72px) 34px;
   background:
-    linear-gradient(180deg, rgba(216, 180, 189, .95) 0%, rgba(95, 57, 70, .86) 18%, rgba(23, 16, 21, .97) 50%),
-    radial-gradient(circle at 14% 18%, rgba(230, 189, 139, .18), transparent 28%),
-    radial-gradient(circle at 86% 0%, rgba(169, 93, 108, .18), transparent 30%),
-    linear-gradient(90deg, rgba(18, 11, 16, .96), rgba(35, 22, 29, .88)),
+    linear-gradient(180deg, rgba(205, 160, 170, .95) 0%, rgba(84, 50, 64, .88) 16%, rgba(19, 13, 17, .98) 48%),
+    linear-gradient(90deg, rgba(19, 13, 17, .98), rgba(45, 28, 38, .86)),
     url("footer.jpg") center / cover no-repeat;
   color: var(--white);
 }
@@ -938,16 +931,16 @@ main {
 }
 
 .footer-grid {
-  width: min(var(--max), 100%);
+  width: min(1160px, 100%);
   display: grid;
   grid-template-columns: 1.05fr 1.25fr 1fr;
   gap: clamp(24px, 4vw, 46px);
   margin: 0 auto;
   align-items: start;
-  border: 1px solid rgba(255, 255, 255, .15);
+  border: 1px solid rgba(255, 255, 255, .14);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .035));
+    linear-gradient(180deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .04));
   padding: clamp(26px, 4.2vw, 42px);
   box-shadow: 0 26px 78px rgba(0, 0, 0, .30);
   backdrop-filter: blur(10px);
@@ -1073,9 +1066,10 @@ main {
     grid-template-columns: 1fr;
     justify-items: center;
     width: min(calc(100% - 28px), 760px);
-    border-radius: 26px;
-    gap: 10px;
-    padding: 12px;
+    border-radius: 24px;
+    gap: 12px;
+    padding: 14px;
+    background: rgba(23, 15, 20, .22);
   }
 
   .nav {
@@ -1123,8 +1117,16 @@ main {
 
   .hero-header {
     margin-top: 12px;
-    padding: 10px 12px;
+    padding: 10px;
     border-radius: 24px;
+    border-color: rgba(255, 255, 255, .11);
+    background: rgba(23, 15, 20, .16);
+    box-shadow: none;
+  }
+
+  .hero-header::after {
+    width: 72%;
+    bottom: -10px;
   }
 
   .logo {
@@ -1134,7 +1136,7 @@ main {
   }
 
   .logo img {
-    width: 58px;
+    width: 54px;
   }
 
   .hero-redes {
@@ -1154,15 +1156,15 @@ main {
 
   .nav a {
     min-width: 0;
-    min-height: 48px;
+    min-height: 46px;
     display: grid;
     grid-template-rows: 17px auto;
     gap: 4px;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .16);
     border-radius: 14px;
-    background: rgba(255, 255, 255, .08);
-    padding: 7px 3px 6px;
+    background: rgba(255, 255, 255, .07);
+    padding: 6px 3px;
     font-size: 9px;
     line-height: 1;
     text-shadow: 0 5px 14px rgba(0, 0, 0, .58);
@@ -1193,7 +1195,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 28px 18px 70px;
+    padding: 30px 18px 72px;
     text-align: center;
   }
 
@@ -1239,7 +1241,10 @@ main {
 
   .servicios {
     margin-top: 0;
-    padding-top: 52px;
+    padding-top: 58px;
+    background:
+      linear-gradient(180deg, rgba(75, 45, 57, .11) 0%, rgba(255, 248, 242, 0) 9%),
+      linear-gradient(180deg, #f9ecee 0%, #fff8f2 20%, #fffaf6 50%, #f3dfe3 100%);
   }
 
   .servicios::before {
@@ -1265,10 +1270,12 @@ main {
 
   .servicios-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .card {
-    min-height: 330px;
+    min-height: 318px;
+    aspect-ratio: 1 / 1.12;
   }
 
   .card-content {
@@ -1282,6 +1289,7 @@ main {
   .cta-inner {
     align-items: stretch;
     flex-direction: column;
+    padding: 24px 20px;
   }
 
   .mvv-grid {
@@ -1294,7 +1302,7 @@ main {
 
   .footer-grid {
     gap: 34px;
-    padding: 24px 18px;
+    padding: 26px 18px;
   }
 
   .footer-brand,
@@ -1350,7 +1358,7 @@ main {
   }
 
   .hero-content h1 {
-    font-size: 40px;
+    font-size: 42px;
   }
 
   .section-heading h2,
