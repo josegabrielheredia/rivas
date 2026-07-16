@@ -309,11 +309,11 @@ main {
 .logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 48%;
+  object-fit: contain;
+  object-position: center;
   border-radius: 0;
-  mix-blend-mode: screen;
-  filter: brightness(1.18) contrast(1.08) saturate(1.12) drop-shadow(0 12px 22px rgba(0, 0, 0, .42));
+  mix-blend-mode: normal;
+  filter: brightness(1.06) contrast(1.05) saturate(1.08) drop-shadow(0 12px 22px rgba(0, 0, 0, .42));
 }
 
 .logo span {
@@ -1142,8 +1142,8 @@ main {
   width: min(270px, 78%);
   margin: 0 auto 28px;
   border-radius: 0;
-  mix-blend-mode: screen;
-  filter: brightness(1.18) contrast(1.08) saturate(1.08);
+  mix-blend-mode: normal;
+  filter: brightness(1.06) contrast(1.05) saturate(1.08);
 }
 
 .footer-brand h2 {
