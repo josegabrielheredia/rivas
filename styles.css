@@ -1084,14 +1084,18 @@ main {
   position: relative;
   overflow: hidden;
   margin-top: -1px;
-  padding: clamp(70px, 7vw, 104px) 0 34px;
-  background: var(--page-bg);
+  padding: clamp(70px, 7vw, 104px) 0 28px;
+  background:
+    linear-gradient(135deg, rgba(70, 42, 55, .98) 0%, rgba(35, 22, 30, .99) 46%, rgba(19, 13, 17, .99) 100%);
   color: var(--white);
 }
 
 .contacto-footer::before {
-  display: none;
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-2), #efbec8, rgba(255, 248, 242, .28));
 }
 
 .contacto-footer > * {
@@ -1107,24 +1111,20 @@ main {
   gap: 0;
   margin: 0 auto;
   align-items: stretch;
-  border: 1px solid rgba(239, 200, 143, .16);
+  border: 0;
   border-left: 0;
   border-right: 0;
   border-radius: 0;
-  background:
-    linear-gradient(135deg, rgba(70, 42, 55, .98) 0%, rgba(35, 22, 30, .99) 46%, rgba(19, 13, 17, .99) 100%);
+  background: transparent;
   color: var(--white);
-  box-shadow: 0 32px 92px rgba(47, 28, 38, .28);
+  box-shadow: none;
   backdrop-filter: blur(14px);
   overflow: hidden;
 }
 
 .footer-grid::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold-2), #efbec8, rgba(255, 248, 242, .28));
+  display: none;
+  content: none;
 }
 
 .footer-grid::after {
@@ -1266,11 +1266,13 @@ main {
 }
 
 .footer-social-clean {
-  width: min(var(--max), 100%);
+  width: min(1160px, calc(100% - 44px));
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin: 28px auto 0;
+  margin: 0 auto;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, .12);
 }
 
 .footer-social-clean a {
@@ -1283,11 +1285,11 @@ main {
 }
 
 .copy {
-  width: min(var(--max), 100%);
-  margin: 22px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+  width: min(1160px, calc(100% - 44px));
+  margin: 16px auto 0;
+  padding-top: 0;
+  border-top: 0;
+  color: rgba(255, 248, 242, .58);
   font-size: 13px;
   text-align: center;
 }
