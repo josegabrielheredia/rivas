@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rivas Gonzalez Salon y Spa</title>
+  <meta
+    name="description"
+    content="Rivas González Salón & Spa en Yamasá, Monte Plata. Servicios de belleza, uñas, cejas, pestañas, rizos, balayage, micropigmentación y cuidado capilar."
+  />
+  <title>Rivas González Salón & Spa | Belleza y cuidado en Yamasá</title>
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- FUENTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- ICONOS -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -23,166 +25,265 @@
 </head>
 <body>
 
-<!-- BOTÓN WHATSAPP -->
-<a href="https://wa.me/18296244173" class="whatsapp-float" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+<a class="skip-link" href="#servicios">Saltar al contenido</a>
+
+<a
+  href="https://wa.me/18296244173"
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Escribir por WhatsApp"
+>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" />
 </a>
 
-<!-- HERO -->
 <section id="inicio" class="hero section">
   <div class="hero-overlay"></div>
 
-  <header class="header hero-header">
-    <div class="logo">
-      <img src="servicios/logo.png" alt="Rivas González Salón & Spa" />
-      <span>Rivas González<br />Salon & Spa</span>
-    </div>
+  <header class="hero-header">
+    <a class="logo" href="#inicio" aria-label="Rivas González Salón & Spa">
+      <img src="servicios/logo.png" alt="Logo de Rivas González Salón & Spa" />
+      <span>Rivas González<br />Salón & Spa</span>
+    </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navegacion principal">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
-      <a href="#nosotros">Sobre Nosotros</a>
-      <a href="#contacto">Contáctanos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#comentarios">Opiniones</a>
+      <a href="#contacto">Contacto</a>
     </nav>
 
-    <div class="hero-redes">
-      <a href="https://www.facebook.com/share/17EGGtXN8v/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/salon_y_spa_rg" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://wa.me/18296244173" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="hero-redes" aria-label="Redes sociales">
+      <a href="https://www.facebook.com/share/17EGGtXN8v/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/salon_y_spa_rg" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/18296244173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
     </div>
   </header>
 
   <div class="hero-content anim">
-    <h2>¡El lugar perfecto de belleza!</h2>
+    <span class="eyebrow">Salón & Spa en Yamasá</span>
+    <h1>El lugar perfecto de belleza</h1>
     <p>
-      Servicio personalizado de salón de belleza y estética para contribuir, en una atmósfera de bienestar,
-      a elevar la imagen de nuestros clientes y satisfacer sus expectativas en calidad, innovación y servicio.
+      Servicios de salón, estética y bienestar con atención personalizada,
+      cuidado profesional y resultados pensados para resaltar tu estilo.
     </p>
 
-    <a href="https://wa.me/18296244173" target="_blank" class="btn-hero">
-      <i class="fa-solid fa-calendar-check"></i> Haz Tu Cita
-    </a>
-  </div>
-</section>
-
-<!-- SERVICIOS -->
-<section id="servicios" class="servicios section">
-  <h2 class="anim">Nuestros Servicios</h2>
-
-  <div class="servicios-grid">
-    <div class="card video-card anim">
-      <video src="servicios/pigmentacion.mp4" autoplay muted loop playsinline preload="metadata"></video>
-      <h3>Micropigmentación</h3>
+    <div class="hero-actions">
+      <a href="https://wa.me/18296244173" target="_blank" rel="noopener noreferrer" class="btn-hero">
+        <i class="fa-solid fa-calendar-check"></i> Haz tu cita
+      </a>
+      <a href="#servicios" class="btn-ghost">Ver servicios</a>
     </div>
 
-    <div class="card anim"><img src="servicios/unas_manos_pies.jpg" /><h3>Uñas de manos y pies</h3></div>
-    <div class="card anim"><img src="servicios/hidratacion_capilar.jpg" /><h3>Hidratación capilar</h3></div>
-    <div class="card anim"><img src="servicios/balayage.jpg" /><h3>Balayage</h3></div>
-    <div class="card anim"><img src="servicios/cejas_pestanas.jpg" /><h3>Cejas y pestañas</h3></div>
-    <div class="card anim"><img src="servicios/tintado_cejas.jpg" /><h3>Tintado de cejas</h3></div>
-    <div class="card anim"><img src="servicios/secado_planchado.jpg" /><h3>Secado y planchado</h3></div>
-    <div class="card anim"><img src="servicios/unas_acrilicas.jpg" /><h3>Uñas acrílicas</h3></div>
-    <div class="card anim"><img src="servicios/pestanas_pelo_pelo.jpg" /><h3>Pestañas pelo a pelo</h3></div>
-  </div>
-</section>
-
-<!-- SOBRE NOSOTROS -->
-<section id="nosotros" class="nosotros section">
-  <h2 class="anim">Sobre nosotros</h2>
-
-  <p class="anim">
-    En <strong>Rivas González Salón & Spa</strong> encontrarás todo en un solo lugar...
-  </p>
-
-  <div class="mvv-grid">
-    <div class="mvv-card anim">
-      <i class="fa-solid fa-bullseye"></i>
-      <h3>Misión</h3>
-      <p>Brindar servicios de belleza y bienestar con altos estándares de calidad.</p>
-    </div>
-
-    <div class="mvv-card anim">
-      <i class="fa-solid fa-eye"></i>
-      <h3>Visión</h3>
-      <p>Ser un salón & spa reconocido por la excelencia e innovación.</p>
-    </div>
-
-    <div class="mvv-card anim">
-      <i class="fa-solid fa-gem"></i>
-      <h3>Valores</h3>
-      <p>Compromiso, respeto, calidad, innovación y pasión.</p>
+    <div class="hero-stats" aria-label="Resumen del salón">
+      <div>
+        <strong>12+</strong>
+        <span>Servicios</span>
+      </div>
+      <div>
+        <strong>1:1</strong>
+        <span>Atención</span>
+      </div>
+      <div>
+        <strong>7 días</strong>
+        <span>Disponibles</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- COMENTARIOS -->
-<section id="comentarios" class="comentarios section">
-  <h2 class="anim">Opiniones de nuestros clientes</h2>
-
-  <form id="commentForm" class="comment-form anim">
-    <input type="text" id="nombre" placeholder="Tu nombre" required />
-    <textarea id="mensaje" placeholder="Escribe tu opinión..." required></textarea>
-
-    <div class="rating">
-      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+<main>
+  <section id="servicios" class="servicios section">
+    <div class="section-heading anim">
+      <span class="eyebrow">Beauty menu</span>
+      <h2>Nuestros servicios</h2>
+      <p>Una experiencia completa para cabello, uñas, cejas, pestañas y cuidado personal.</p>
     </div>
 
-    <button type="submit">Enviar comentario</button>
-  </form>
+    <div class="servicios-grid">
+      <article class="card video-card anim">
+        <video src="servicios/pigmentacion.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div class="card-content">
+          <span>Especialidad</span>
+          <h3>Micropigmentación</h3>
+        </div>
+      </article>
 
-  <div id="commentsList" class="comments-list anim"></div>
-</section>
+      <article class="card anim">
+        <img src="servicios/unas_manos_pies.jpg" alt="Servicio de uñas de manos y pies" />
+        <div class="card-content"><span>Manos y pies</span><h3>Uñas de manos y pies</h3></div>
+      </article>
 
-<!-- CONTACTO / FOOTER -->
-  <section id="contacto" class="contacto-footer section">
-    <h2 class="anim">Contáctanos</h2>
-    <p class="contacto-frase anim">Donde la belleza y el cuidado se unen.</p>
+      <article class="card anim">
+        <img src="servicios/hidratacion_capilar.jpg" alt="Hidratación capilar" />
+        <div class="card-content"><span>Cabello</span><h3>Hidratación capilar</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/balayage.jpg" alt="Balayage profesional" />
+        <div class="card-content"><span>Color</span><h3>Balayage</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/cejas_pestanas.jpg" alt="Cejas y pestañas" />
+        <div class="card-content"><span>Mirada</span><h3>Cejas y pestañas</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/tintado_cejas.jpg" alt="Tintado de cejas" />
+        <div class="card-content"><span>Cejas</span><h3>Tintado de cejas</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/secado_planchado.jpg" alt="Secado y planchado de cabello" />
+        <div class="card-content"><span>Styling</span><h3>Secado y planchado</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/unas_acrilicas.jpg" alt="Uñas acrílicas" />
+        <div class="card-content"><span>Nails</span><h3>Uñas acrílicas</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/pestanas_pelo_pelo.jpg" alt="Pestañas pelo a pelo" />
+        <div class="card-content"><span>Pestañas</span><h3>Pestañas pelo a pelo</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/estilizacion_rizos.jpeg" alt="Estilización y definición de rizos" />
+        <div class="card-content"><span>Rizos</span><h3>Estilización de rizos</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/rizos_hombres.jpeg" alt="Hidratación y definición de rizos en hombres" />
+        <div class="card-content"><span>Hombres</span><h3>Rizos en hombres</h3></div>
+      </article>
+
+      <article class="card anim">
+        <img src="servicios/Trenzado_para_hombre_y_mujer.jpeg" alt="Trenzado para hombre y mujer" />
+        <div class="card-content"><span>Trenzado</span><h3>Trenzas para todos</h3></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-band section">
+    <div class="cta-inner anim">
+      <div>
+        <span class="eyebrow">Agenda fácil</span>
+        <h2>Reserva tu espacio y llega lista para brillar.</h2>
+      </div>
+      <a href="https://wa.me/18296244173" target="_blank" rel="noopener noreferrer" class="btn-hero">
+        <i class="fa-brands fa-whatsapp"></i> Escribir ahora
+      </a>
+    </div>
+  </section>
+
+  <section id="nosotros" class="nosotros section">
+    <div class="about-layout">
+      <div class="about-copy anim">
+        <span class="eyebrow">Sobre nosotros</span>
+        <h2>Belleza, cuidado y confianza en un solo lugar</h2>
+        <p>
+          En <strong>Rivas González Salón & Spa</strong> creamos una experiencia cercana,
+          elegante y enfocada en tu bienestar. Cada servicio se trabaja con dedicación,
+          productos adecuados y una atención pensada para que te sientas cómoda desde que llegas.
+        </p>
+      </div>
+
+      <div class="mvv-grid">
+        <article class="mvv-card anim">
+          <i class="fa-solid fa-bullseye"></i>
+          <h3>Misión</h3>
+          <p>Brindar servicios de belleza y bienestar con altos estándares de calidad.</p>
+        </article>
+
+        <article class="mvv-card anim">
+          <i class="fa-solid fa-eye"></i>
+          <h3>Visión</h3>
+          <p>Ser un salón & spa reconocido por excelencia, innovación y buen trato.</p>
+        </article>
+
+        <article class="mvv-card anim">
+          <i class="fa-solid fa-gem"></i>
+          <h3>Valores</h3>
+          <p>Compromiso, respeto, calidad, innovación y pasión por cada detalle.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="comentarios" class="comentarios section">
+    <div class="section-heading anim">
+      <span class="eyebrow">Experiencias reales</span>
+      <h2>Opiniones de nuestros clientes</h2>
+    </div>
+
+    <form id="commentForm" class="comment-form anim">
+      <input type="text" id="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required />
+      <textarea id="mensaje" placeholder="Escribe tu opinión..." aria-label="Tu opinión" required></textarea>
+
+      <div class="rating" aria-label="Calificación">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+
+      <button type="submit">Enviar comentario</button>
+    </form>
+
+    <div id="commentsList" class="comments-list anim"></div>
+  </section>
+</main>
+
+<footer id="contacto" class="contacto-footer section">
+  <div class="footer-grid">
+    <div class="footer-brand anim">
+      <img src="servicios/logo.png" alt="Logo de Rivas González Salón & Spa" />
+      <h2>Rivas González Salón & Spa</h2>
+      <p>Donde la belleza y el cuidado se unen.</p>
+    </div>
 
     <div class="contacto-datos anim">
-      <p>
-        <i class="fa-solid fa-location-dot"></i>
-        C/ Juan Pablo Duarte Núm. 168, La Cuesta del Jobo,
-        Yamasá, Monte Plata, República Dominicana.
-      </p>
-
-      <p class="footer-horario">
-        <i class="fa-solid fa-clock"></i><br>
-        <strong>Horario:</strong><br>
-        Lunes a Sábado: 9:00 AM - 6:00 PM <br>
-        Domingos: 10:00 AM - 4:00 PM
-      </p>
-
+      <h3>Contáctanos</h3>
+      <p><i class="fa-solid fa-location-dot"></i> C/ Juan Pablo Duarte Núm. 168, La Cuesta del Jobo, Yamasá, Monte Plata, República Dominicana.</p>
       <p><i class="fa-solid fa-phone"></i> +1 (829) 624-4173</p>
       <p><i class="fa-solid fa-envelope"></i> yuderkagl56@gmail.com</p>
     </div>
 
-    <div class="footer-redes footer-social-clean anim">
-      <a href="https://www.instagram.com/salon_y_spa_rg" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/share/17EGGtXN8v/" target="_blank">
-        <i class="fa-brands fa-facebook"></i>
-      </a>
-      <a href="https://www.tiktok.com/@sandra_nails_yamasa" target="_blank">
-        <i class="fa-brands fa-tiktok"></i>
-      </a>
-      <a href="https://wa.me/18296244173" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
+    <div class="footer-horario anim">
+      <h3>Horario</h3>
+      <p><strong>Lunes a Sábado:</strong> 9:00 AM - 6:00 PM</p>
+      <p><strong>Domingos:</strong> 10:00 AM - 4:00 PM</p>
     </div>
+  </div>
 
-    <p class="copy anim">
-      © 2026 Rivas González Salon & Spa | Todos los derechos reservados
-    </p>
-  </section>
+  <div class="footer-redes footer-social-clean anim">
+    <a href="https://www.instagram.com/salon_y_spa_rg" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/share/17EGGtXN8v/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://www.tiktok.com/@sandra_nails_yamasa" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+    <a href="https://wa.me/18296244173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
 
+  <p class="copy anim">
+    © 2026 Rivas González Salón & Spa | Todos los derechos reservados
+  </p>
+</footer>
 
-
-<!-- FIREBASE (COMPAT) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-<!-- JS PRINCIPAL -->
 <script src="main.js" defer></script>
 
 </body>

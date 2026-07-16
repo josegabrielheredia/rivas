@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let i = 0;
-    const heroTitle = document.querySelector(".hero-content h2");
+    const heroTitle = document.querySelector(".hero-content h1, .hero-content h2");
 
     if (heroTitle) {
       heroTitle.classList.add("text-show");
