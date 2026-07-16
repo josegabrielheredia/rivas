@@ -278,10 +278,10 @@ textarea:focus-visible {
   width: max-content;
   max-width: 100%;
   justify-self: center;
-  border: 1px solid rgba(255, 255, 255, .10);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .06);
-  padding: 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
 }
 
 .nav a {
@@ -291,21 +291,33 @@ textarea:focus-visible {
   place-items: center;
   border-radius: 999px;
   padding: 8px clamp(12px, 1.6vw, 18px);
-  color: rgba(255, 255, 255, .82);
+  color: rgba(255, 255, 255, .88);
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
-  transition: color .2s ease, background .2s ease, transform .2s ease;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, .46);
+  transition: color .2s ease, transform .2s ease;
 }
 
 .nav a::after {
-  display: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+  transform: translateX(-50%);
+  transition: width .25s ease;
 }
 
 .nav a:hover {
   color: var(--white);
-  background: rgba(255, 255, 255, .12);
   transform: translateY(-1px);
+}
+
+.nav a:hover::after {
+  width: 70%;
 }
 
 .hero-redes {
@@ -933,16 +945,17 @@ textarea:focus-visible {
     min-height: 35px;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, .13);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .075);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     padding: 7px 3px;
     font-size: 10px;
     line-height: 1;
+    text-shadow: 0 5px 14px rgba(0, 0, 0, .58);
   }
 
   .nav a::after {
-    display: none;
+    bottom: 2px;
   }
 
   .hero-content {
