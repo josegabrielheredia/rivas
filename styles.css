@@ -194,7 +194,7 @@ textarea:focus-visible {
    HERO
 ========================= */
 .hero {
-  min-height: 88svh;
+  min-height: 78svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -219,8 +219,8 @@ textarea:focus-visible {
   right: 0;
   bottom: -1px;
   z-index: 1;
-  height: 96px;
-  background: linear-gradient(180deg, transparent, #fffaf7 86%);
+  height: 68px;
+  background: linear-gradient(180deg, transparent, #fffaf7 84%);
 }
 
 .hero-header {
@@ -357,7 +357,7 @@ textarea:focus-visible {
   z-index: 2;
   width: min(var(--max), 100%);
   margin: auto;
-  padding: clamp(72px, 9vw, 124px) clamp(20px, 5vw, 72px) 104px;
+  padding: clamp(58px, 8vw, 108px) clamp(20px, 5vw, 72px) 74px;
 }
 
 .hero-content h1 {
@@ -465,9 +465,10 @@ textarea:focus-visible {
    SERVICIOS
 ========================= */
 .servicios {
-  padding: clamp(78px, 10vw, 124px) clamp(18px, 5vw, 72px);
+  padding: clamp(46px, 7vw, 78px) clamp(18px, 5vw, 72px) clamp(78px, 10vw, 124px);
   background:
-    linear-gradient(180deg, #fffaf7 0%, #fff 36%, #fbf0f1 100%);
+    radial-gradient(circle at 50% 0%, rgba(230, 189, 139, .14), transparent 30%),
+    linear-gradient(180deg, #fffaf7 0%, #fff 34%, #fbf0f1 100%);
 }
 
 .servicios-grid {
@@ -1042,7 +1043,7 @@ textarea:focus-visible {
   }
 
   .hero-content {
-    padding: 54px 18px 96px;
+    padding: 46px 18px 68px;
     text-align: center;
   }
 
@@ -1081,6 +1082,10 @@ textarea:focus-visible {
   .comentarios {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .servicios {
+    padding-top: 42px;
   }
 
   .section-heading {
