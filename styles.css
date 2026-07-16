@@ -217,8 +217,8 @@ textarea:focus-visible {
   right: 0;
   bottom: -1px;
   z-index: 1;
-  height: 52px;
-  background: linear-gradient(180deg, transparent 0%, #fff9f5 76%);
+  height: 104px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 249, 245, .76) 62%, #fff9f5 100%);
 }
 
 .hero-header {
@@ -464,9 +464,12 @@ textarea:focus-visible {
    SERVICIOS
 ========================= */
 .servicios {
-  margin-top: -1px;
-  padding: clamp(34px, 4vw, 58px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
-  background: linear-gradient(180deg, #fff9f5 0%, #fff 40%, #f8ecee 100%);
+  margin-top: -34px;
+  padding: clamp(70px, 7vw, 94px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .16), transparent 28%),
+    linear-gradient(180deg, #fff9f5 0%, #fff 38%, #f8ecee 100%);
+  z-index: 2;
 }
 
 .servicios-grid {
@@ -1011,24 +1014,27 @@ textarea:focus-visible {
 
   .nav {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px 10px;
     border: 0;
     background: transparent;
     padding: 0;
   }
 
   .nav a {
-    min-width: 0;
-    min-height: 32px;
+    flex: 0 1 calc((100% - 22px) / 3);
+    max-width: 104px;
+    min-width: 86px;
+    min-height: 34px;
     display: grid;
     place-items: center;
     border: 0;
     border-radius: 0;
     background: transparent;
-    padding: 6px 2px;
-    font-size: 10px;
+    padding: 7px 4px;
+    font-size: 11px;
     line-height: 1;
     text-shadow: 0 5px 14px rgba(0, 0, 0, .58);
   }
@@ -1087,7 +1093,8 @@ textarea:focus-visible {
   }
 
   .servicios {
-    padding-top: 34px;
+    margin-top: 0;
+    padding-top: 46px;
   }
 
   .section-heading {
@@ -1185,7 +1192,7 @@ textarea:focus-visible {
 
 @media (max-width: 430px) {
   .nav {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    display: flex;
   }
 
   .hero-content h1 {
