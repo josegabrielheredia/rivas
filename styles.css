@@ -471,30 +471,19 @@ textarea:focus-visible {
   width: min(var(--max), 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(14px, 2vw, 22px);
 }
 
 .card {
   position: relative;
-  grid-column: span 4;
-  min-height: 350px;
+  min-height: 330px;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--ink);
   box-shadow: var(--shadow-soft);
   isolation: isolate;
   transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.card:nth-child(1),
-.card:nth-child(10) {
-  grid-column: span 6;
-}
-
-.card:nth-child(11),
-.card:nth-child(12) {
-  grid-column: span 3;
 }
 
 .card::after {
@@ -555,8 +544,8 @@ textarea:focus-visible {
 .card-content h3 {
   max-width: 94%;
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(24px, 2.4vw, 34px);
-  line-height: 1.03;
+  font-size: clamp(20px, 1.45vw, 23px);
+  line-height: 1.05;
   text-shadow: 0 12px 28px rgba(0, 0, 0, .42);
 }
 
@@ -876,12 +865,8 @@ textarea:focus-visible {
     flex-wrap: wrap;
   }
 
-  .card,
-  .card:nth-child(1),
-  .card:nth-child(10),
-  .card:nth-child(11),
-  .card:nth-child(12) {
-    grid-column: span 6;
+  .servicios-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-layout,
@@ -1011,12 +996,7 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .card,
-  .card:nth-child(1),
-  .card:nth-child(10),
-  .card:nth-child(11),
-  .card:nth-child(12) {
-    grid-column: auto;
+  .card {
     min-height: 330px;
   }
 
