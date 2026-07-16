@@ -793,78 +793,137 @@ textarea:focus-visible {
    FOOTER
 ========================= */
 .contacto-footer {
-  padding: clamp(70px, 9vw, 100px) clamp(18px, 5vw, 72px) 34px;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(76px, 9vw, 106px) clamp(18px, 5vw, 72px) 34px;
   background:
-    linear-gradient(90deg, rgba(18, 11, 16, .94), rgba(18, 11, 16, .80)),
+    radial-gradient(circle at 14% 18%, rgba(230, 189, 139, .18), transparent 28%),
+    radial-gradient(circle at 86% 0%, rgba(169, 93, 108, .18), transparent 30%),
+    linear-gradient(90deg, rgba(18, 11, 16, .96), rgba(35, 22, 29, .88)),
     url("footer.jpg") center / cover no-repeat;
   color: var(--white);
+}
+
+.contacto-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .10), rgba(0, 0, 0, .42));
+}
+
+.contacto-footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-grid {
   width: min(var(--max), 100%);
   display: grid;
-  grid-template-columns: 1.1fr 1.2fr .8fr;
-  gap: clamp(28px, 5vw, 60px);
+  grid-template-columns: 1.1fr 1.25fr .85fr;
+  gap: clamp(22px, 4vw, 44px);
   margin: 0 auto;
   align-items: start;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .045);
+  padding: clamp(24px, 4vw, 38px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .26);
+  backdrop-filter: blur(10px);
+}
+
+.footer-brand,
+.contacto-datos,
+.footer-horario {
+  min-height: 100%;
+}
+
+.contacto-datos,
+.footer-horario {
+  border-left: 1px solid rgba(255, 255, 255, .10);
+  padding-left: clamp(18px, 3vw, 32px);
 }
 
 .footer-brand img {
-  width: 92px;
-  margin-bottom: 18px;
+  width: 86px;
+  margin-bottom: 20px;
   filter: drop-shadow(0 14px 26px rgba(0, 0, 0, .32));
 }
 
 .footer-brand h2 {
   max-width: 360px;
   color: var(--white);
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(30px, 4vw, 42px);
 }
 
 .footer-brand p,
 .contacto-datos p,
 .footer-horario p {
-  color: rgba(255, 255, 255, .78);
+  color: rgba(255, 255, 255, .80);
 }
 
 .contacto-datos,
 .footer-horario {
   display: grid;
-  gap: 12px;
+  gap: 13px;
 }
 
 .contacto-datos h3,
 .footer-horario h3 {
-  margin-bottom: 8px;
+  position: relative;
+  margin-bottom: 12px;
   font-family: "Playfair Display", Georgia, serif;
   color: var(--white);
-  font-size: 25px;
+  font-size: 26px;
+}
+
+.contacto-datos h3::after,
+.footer-horario h3::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--gold-2), transparent);
 }
 
 .contacto-datos p,
 .footer-horario p {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   line-height: 1.7;
 }
 
 .contacto-datos i {
-  width: 22px;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: rgba(230, 189, 139, .12);
   color: var(--gold-2);
+  font-size: 13px;
 }
 
 .footer-social-clean {
   width: min(var(--max), 100%);
   display: flex;
   gap: 12px;
-  margin: 38px auto 0;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255, 255, 255, .14);
+  justify-content: center;
+  margin: 28px auto 0;
 }
 
 .copy {
   width: min(var(--max), 100%);
-  margin: 26px auto 0;
+  margin: 24px auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, .12);
   color: rgba(255, 255, 255, .55);
   font-size: 13px;
+  text-align: center;
 }
 
 /* =========================
@@ -1049,6 +1108,44 @@ textarea:focus-visible {
 
   .footer-grid {
     gap: 34px;
+    padding: 24px 18px;
+  }
+
+  .footer-brand,
+  .contacto-datos,
+  .footer-horario {
+    text-align: center;
+  }
+
+  .contacto-datos,
+  .footer-horario {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .10);
+    padding-left: 0;
+    padding-top: 28px;
+  }
+
+  .footer-brand img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-brand h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contacto-datos h3::after,
+  .footer-horario h3::after {
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+  }
+
+  .contacto-datos p,
+  .footer-horario p {
+    justify-content: center;
+    text-align: left;
   }
 
   .footer-social-clean {
