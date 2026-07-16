@@ -511,10 +511,10 @@ main {
 .servicios {
   margin-top: -1px;
   overflow: hidden;
-  padding: clamp(48px, 5.5vw, 82px) clamp(18px, 5vw, 72px) clamp(82px, 9vw, 120px);
+  padding: clamp(48px, 5.5vw, 82px) clamp(18px, 5vw, 72px) clamp(56px, 7vw, 86px);
   background:
     linear-gradient(90deg, rgba(255, 248, 242, .78), transparent 20%, transparent 80%, rgba(255, 248, 242, .78)),
-    linear-gradient(180deg, #fff8f2 0%, #fff8f2 16%, #fffaf6 52%, #f3dfe3 100%);
+    linear-gradient(180deg, #fff8f2 0%, #fff8f2 16%, #fffaf6 100%);
   z-index: 2;
 }
 
@@ -641,10 +641,11 @@ main {
    CTA
 ========================= */
 .cta-band {
-  padding: clamp(22px, 3.6vw, 44px) clamp(18px, 5vw, 72px);
+  margin-top: -1px;
+  padding: 0 clamp(18px, 5vw, 72px) clamp(60px, 7vw, 92px);
   background:
     linear-gradient(90deg, rgba(255, 248, 242, .78), transparent 20%, transparent 80%, rgba(255, 248, 242, .78)),
-    linear-gradient(180deg, #fff8f2 0%, #fffaf6 54%, #f3dfe3 100%);
+    linear-gradient(180deg, #fff8f2 0%, #fff8f2 16%, #fffaf6 100%);
 }
 
 .cta-inner {
@@ -1327,7 +1328,7 @@ main {
     margin-top: -1px;
     padding-top: 40px;
     background:
-      linear-gradient(180deg, #fff8f2 0%, #fff8f2 18%, #fffaf6 50%, #f3dfe3 100%);
+      linear-gradient(180deg, #fff8f2 0%, #fff8f2 18%, #fffaf6 100%);
   }
 
   .servicios::before {
@@ -1361,7 +1362,7 @@ main {
   }
 
   .cta-band {
-    padding: 18px 16px;
+    padding: 0 16px 54px;
   }
 
   .cta-inner {
