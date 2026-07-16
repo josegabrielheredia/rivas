@@ -74,29 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {}
 
   /* ================================
-     HERO TEXTO ROTATIVO
+     HERO TEXTO ESTABLE
   ================================ */
   try {
-    const textos = [
-      "Realza tu belleza natural",
-      "Donde nace tu mejor versión",
-      "Belleza, elegancia y cuidado",
-      "Tu espacio de bienestar"
-    ];
-
-    let i = 0;
     const heroTitle = document.querySelector(".hero-content h1, .hero-content h2");
 
     if (heroTitle) {
       heroTitle.classList.add("text-show");
-      setInterval(() => {
-        heroTitle.classList.remove("text-show");
-        setTimeout(() => {
-          heroTitle.textContent = textos[i];
-          heroTitle.classList.add("text-show");
-          i = (i + 1) % textos.length;
-        }, 250);
-      }, 3500);
     }
   } catch (e) {}
 
@@ -107,9 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const commentsList = document.getElementById("commentsList");
   const stars = document.querySelectorAll(".rating span");
 
+  if (!form || !commentsList) return;
+
   let rating = 0;
 
-  // ⭐ estrellas
+  // Selector de estrellas.
   stars.forEach((star, index) => {
     star.addEventListener("click", () => {
       rating = index + 1;
@@ -120,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 📤 enviar comentario
+  // Enviar comentario.
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -128,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensaje = document.getElementById("mensaje").value.trim();
 
     if (!nombre || !mensaje || rating === 0) {
-      alert("Completa todos los campos y selecciona estrellas ⭐");
+      alert("Completa todos los campos y selecciona una calificacion.");
       return;
     }
 
@@ -148,21 +134,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 👀 mostrar comentarios en tiempo real
+  // Mostrar comentarios en tiempo real.
   db.collection("comentarios")
     .orderBy("fecha", "desc")
     .onSnapshot(snapshot => {
-      commentsList.innerHTML = "";
+      commentsList.replaceChildren();
 
       snapshot.forEach(doc => {
         const c = doc.data();
-        commentsList.innerHTML += `
-          <div class="comment">
-            <strong>${c.nombre}</strong>
-            <div class="stars">${"★".repeat(c.estrellas)}</div>
-            <p>${c.mensaje}</p>
-          </div>
-        `;
+        const comment = document.createElement("div");
+        const name = document.createElement("strong");
+        const starsEl = document.createElement("div");
+        const message = document.createElement("p");
+        const starsCount = Math.max(0, Math.min(5, Number(c.estrellas) || 0));
+
+        comment.className = "comment";
+        starsEl.className = "stars";
+        name.textContent = c.nombre || "Cliente";
+        starsEl.textContent = "\u2605".repeat(starsCount);
+        message.textContent = c.mensaje || "";
+
+        comment.append(name, starsEl, message);
+        commentsList.appendChild(comment);
       });
     });
 
