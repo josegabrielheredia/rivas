@@ -528,29 +528,43 @@ main {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(16px, 1.8vw, 22px);
+  counter-reset: servicio;
 }
 
 .card {
   position: relative;
-  min-height: clamp(350px, 31vw, 410px);
-  aspect-ratio: 3 / 4.05;
+  min-height: clamp(340px, 30vw, 398px);
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, .92);
-  box-shadow: 0 18px 52px rgba(59, 39, 47, .12), inset 0 1px 0 rgba(255, 255, 255, .22);
+  border: 1px solid rgba(255, 255, 255, .78);
+  box-shadow: 0 18px 50px rgba(59, 39, 47, .13), 0 1px 0 rgba(255, 255, 255, .70);
   isolation: isolate;
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
 
 .card::before {
-  content: "";
+  counter-increment: servicio;
+  content: counter(servicio, decimal-leading-zero);
   position: absolute;
-  inset: 0;
-  z-index: 2;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: grid;
+  width: 42px;
+  height: 34px;
+  place-items: center;
   pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, .18);
-  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: var(--radius);
+  background: rgba(24, 16, 20, .56);
+  color: rgba(255, 248, 242, .88);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
+  backdrop-filter: blur(12px);
 }
 
 .card::after {
@@ -559,9 +573,9 @@ main {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(23, 17, 20, .02) 0%, rgba(23, 17, 20, .04) 32%, rgba(23, 17, 20, .92) 100%),
-    linear-gradient(90deg, rgba(23, 17, 20, .24), transparent 58%),
-    linear-gradient(0deg, rgba(192, 139, 92, .18), transparent 42%);
+    linear-gradient(180deg, rgba(23, 17, 20, .02) 0%, rgba(23, 17, 20, .12) 36%, rgba(23, 17, 20, .92) 100%),
+    linear-gradient(90deg, rgba(23, 17, 20, .18), transparent 58%),
+    linear-gradient(0deg, rgba(192, 139, 92, .20), transparent 42%);
   transition: opacity .3s ease;
 }
 
@@ -571,19 +585,20 @@ main {
   height: 100%;
   min-height: inherit;
   object-fit: cover;
+  filter: saturate(1.02) contrast(1.02);
   transition: transform .55s ease, filter .55s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(239, 200, 143, .58);
-  box-shadow: var(--shadow-lift);
+  transform: translateY(-7px);
+  border-color: rgba(239, 200, 143, .82);
+  box-shadow: 0 30px 78px rgba(59, 39, 47, .24);
 }
 
 .card:hover img,
 .card:hover video {
   transform: scale(1.06);
-  filter: saturate(1.09) contrast(1.03);
+  filter: saturate(1.13) contrast(1.06) brightness(1.03);
 }
 
 .card-content {
@@ -592,17 +607,21 @@ main {
   right: 0;
   bottom: 0;
   z-index: 2;
-  padding: 26px 22px;
+  display: grid;
+  gap: 8px;
+  padding: 26px 22px 24px;
   color: var(--white);
 }
 
 .card-content span {
   display: inline-flex;
-  margin-bottom: 8px;
-  border: 1px solid rgba(255, 255, 255, .24);
+  width: fit-content;
+  align-items: center;
+  border: 1px solid rgba(239, 200, 143, .26);
   border-radius: 999px;
-  background: rgba(255, 255, 255, .15);
-  padding: 5px 10px;
+  background: rgba(239, 200, 143, .14);
+  color: var(--gold-2);
+  padding: 5px 9px;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: .08em;
@@ -611,9 +630,9 @@ main {
 }
 
 .card-content h3 {
-  max-width: 94%;
+  max-width: calc(100% - 38px);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(21px, 1.5vw, 25px);
+  font-size: clamp(22px, 1.65vw, 28px);
   line-height: 1.05;
   text-shadow: 0 12px 28px rgba(0, 0, 0, .42);
 }
@@ -883,10 +902,10 @@ main {
   position: relative;
   overflow: hidden;
   margin-top: -1px;
-  padding: clamp(82px, 8vw, 112px) clamp(18px, 5vw, 72px) 34px;
+  padding: clamp(88px, 8vw, 118px) clamp(18px, 5vw, 72px) 34px;
   background:
-    linear-gradient(180deg, rgba(205, 160, 170, .95) 0%, rgba(84, 50, 64, .88) 16%, rgba(19, 13, 17, .98) 48%),
-    linear-gradient(90deg, rgba(19, 13, 17, .98), rgba(45, 28, 38, .86)),
+    linear-gradient(180deg, rgba(205, 160, 170, .94) 0%, rgba(68, 39, 52, .92) 18%, rgba(17, 11, 15, .98) 48%),
+    linear-gradient(120deg, rgba(13, 8, 11, .98), rgba(62, 36, 49, .82)),
     url("footer.jpg") center / cover no-repeat;
   color: var(--white);
 }
@@ -897,8 +916,8 @@ main {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 248, 244, .08), rgba(0, 0, 0, .42)),
-    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .16), transparent 25rem);
+    linear-gradient(180deg, rgba(255, 248, 244, .08), rgba(0, 0, 0, .46)),
+    linear-gradient(90deg, rgba(239, 200, 143, .10), transparent 36%, rgba(236, 184, 195, .10));
 }
 
 .contacto-footer > * {
@@ -909,59 +928,67 @@ main {
 .footer-grid {
   width: min(1160px, 100%);
   display: grid;
-  grid-template-columns: 1.05fr 1.25fr 1fr;
-  gap: clamp(24px, 4vw, 46px);
+  grid-template-columns: .95fr 1.32fr .88fr;
+  gap: 0;
   margin: 0 auto;
-  align-items: start;
-  border: 1px solid rgba(255, 255, 255, .14);
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, .16);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .04));
-  padding: clamp(26px, 4.2vw, 42px);
-  box-shadow: 0 26px 78px rgba(0, 0, 0, .30);
-  backdrop-filter: blur(10px);
+    linear-gradient(180deg, rgba(255, 255, 255, .105), rgba(255, 255, 255, .045));
+  box-shadow: 0 30px 86px rgba(0, 0, 0, .36);
+  backdrop-filter: blur(14px);
 }
 
 .footer-brand,
 .contacto-datos,
 .footer-horario {
   min-height: 100%;
+  padding: clamp(24px, 3.8vw, 40px);
 }
 
 .contacto-datos,
 .footer-horario {
   border-left: 1px solid rgba(255, 255, 255, .10);
-  padding-left: clamp(18px, 3vw, 32px);
 }
 
 .footer-brand img {
-  width: 86px;
-  margin-bottom: 20px;
+  width: 78px;
+  margin-bottom: 22px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(239, 200, 143, .22);
   filter: drop-shadow(0 14px 26px rgba(0, 0, 0, .32));
 }
 
 .footer-brand h2 {
   max-width: 360px;
   color: var(--white);
-  font-size: clamp(30px, 4vw, 42px);
+  font-size: clamp(30px, 3.7vw, 42px);
+  line-height: .98;
+}
+
+.footer-brand p {
+  margin-top: 12px;
+  max-width: 300px;
 }
 
 .footer-brand p,
 .contacto-datos p,
 .footer-horario p {
-  color: rgba(255, 255, 255, .80);
+  color: rgba(255, 255, 255, .78);
 }
 
 .contacto-datos,
 .footer-horario {
-  display: grid;
-  gap: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .contacto-datos h3,
 .footer-horario h3 {
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-family: "Playfair Display", Georgia, serif;
   color: var(--white);
   font-size: 26px;
@@ -990,11 +1017,14 @@ main {
 }
 
 .footer-horario p {
-  display: block;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, .10);
+  display: grid;
+  gap: 4px;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-left: 3px solid rgba(239, 200, 143, .70);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, .055);
+  background: rgba(255, 255, 255, .065);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
 }
 
 .footer-horario strong {
@@ -1010,7 +1040,7 @@ main {
   display: inline-grid;
   place-items: center;
   margin-top: 1px;
-  border-radius: 50%;
+  border-radius: var(--radius);
   background: rgba(230, 189, 139, .12);
   color: var(--gold-2);
   font-size: 13px;
@@ -1021,12 +1051,18 @@ main {
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin: 28px auto 0;
+  margin: 30px auto 0;
+}
+
+.footer-social-clean a {
+  width: 42px;
+  height: 42px;
+  border-color: rgba(255, 255, 255, .18);
 }
 
 .copy {
   width: min(var(--max), 100%);
-  margin: 24px auto 0;
+  margin: 26px auto 0;
   padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, .12);
   color: rgba(255, 255, 255, .55);
@@ -1083,6 +1119,16 @@ main {
   .about-layout,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    gap: 0;
+  }
+
+  .contacto-datos,
+  .footer-horario {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .10);
   }
 
   .about-copy {
@@ -1297,13 +1343,14 @@ main {
   }
 
   .footer-grid {
-    gap: 34px;
-    padding: 26px 18px;
+    gap: 0;
+    padding: 0;
   }
 
   .footer-brand,
   .contacto-datos,
   .footer-horario {
+    padding: 28px 20px;
     text-align: center;
   }
 
@@ -1311,8 +1358,6 @@ main {
   .footer-horario {
     border-left: 0;
     border-top: 1px solid rgba(255, 255, 255, .10);
-    padding-left: 0;
-    padding-top: 28px;
   }
 
   .footer-brand img {
