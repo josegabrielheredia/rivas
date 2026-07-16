@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ANIMACIONES SECCIONES
   ================================ */
   try {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section, footer");
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -43,7 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, {
+      rootMargin: "0px 0px 18% 0px",
+      threshold: 0.01
+    });
 
     sections.forEach(section => observer.observe(section));
   } catch (e) {}

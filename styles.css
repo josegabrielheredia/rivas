@@ -152,7 +152,7 @@ main {
 .anim:nth-child(4) { animation-delay: .18s; }
 
 .text-show {
-  animation: titleIn .45s ease both;
+  animation: titleIn .55s cubic-bezier(.2, .75, .25, 1) both;
 }
 
 @keyframes riseIn {
@@ -170,6 +170,69 @@ main {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroLift {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.985);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes textLineSweep {
+  0% {
+    opacity: .28;
+    transform: scaleX(.25);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .48;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes servicePresent {
+  from {
+    opacity: 0;
+    transform: translateY(46px) scale(.94);
+    filter: blur(10px) saturate(.92);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0) saturate(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) saturate(1);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 200, 143, .16);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(239, 200, 143, 0);
+  }
+}
+
+@keyframes footerGlow {
+  from {
+    transform: translateX(-28%);
+  }
+  to {
+    transform: translateX(28%);
   }
 }
 
@@ -406,6 +469,18 @@ main {
   padding: clamp(54px, 6.6vw, 92px) clamp(20px, 5vw, 72px) clamp(54px, 6vw, 76px);
 }
 
+.hero-content .eyebrow,
+.hero-content h1,
+.hero-content p,
+.hero-actions {
+  opacity: 0;
+  animation: heroLift .82s cubic-bezier(.2, .75, .25, 1) forwards;
+}
+
+.hero-content .eyebrow {
+  animation-delay: .12s;
+}
+
 .hero-content h1 {
   max-width: 760px;
   font-family: "Playfair Display", Georgia, serif;
@@ -413,6 +488,7 @@ main {
   line-height: .92;
   text-wrap: balance;
   text-shadow: 0 22px 62px rgba(0, 0, 0, .50);
+  animation-delay: .24s;
 }
 
 .hero-content p {
@@ -422,6 +498,7 @@ main {
   font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.75;
   text-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  animation-delay: .38s;
 }
 
 .hero-actions {
@@ -430,6 +507,7 @@ main {
   align-items: center;
   gap: 14px;
   margin-top: 30px;
+  animation-delay: .52s;
 }
 
 .btn-hero,
@@ -451,6 +529,14 @@ main {
   background: linear-gradient(135deg, #efc995 0%, #ecb8c3 100%);
   color: #1b1518;
   box-shadow: 0 18px 42px rgba(178, 116, 80, .30), inset 0 1px 0 rgba(255, 255, 255, .38);
+}
+
+.btn-hero i {
+  transition: transform .25s ease;
+}
+
+.btn-hero:hover i {
+  transform: translateY(-1px) scale(1.08);
 }
 
 .btn-ghost {
@@ -488,6 +574,8 @@ main {
   width: 34px;
   height: 1px;
   background: linear-gradient(90deg, transparent, currentColor);
+  transform-origin: left;
+  animation: textLineSweep 1.2s ease both;
 }
 
 .section-heading h2,
@@ -503,6 +591,11 @@ main {
 
 .section-heading h2 {
   letter-spacing: .01em;
+}
+
+.section.show .section-heading h2,
+.section.show .about-copy h2 {
+  animation: heroLift .72s cubic-bezier(.2, .75, .25, 1) both;
 }
 
 .section-heading p,
@@ -540,6 +633,44 @@ main {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(16px, 1.8vw, 22px);
   counter-reset: servicio;
+  perspective: 1200px;
+}
+
+.servicios .section-heading.anim,
+.servicios .card.anim {
+  opacity: 0;
+  animation: none;
+}
+
+.servicios .section-heading.anim {
+  transform: translateY(28px);
+}
+
+.servicios .card.anim {
+  transform: translateY(46px) scale(.94);
+  transform-origin: center bottom;
+}
+
+.servicios.show .section-heading.anim {
+  animation: heroLift .75s cubic-bezier(.2, .75, .25, 1) forwards;
+}
+
+.servicios.show .card.anim {
+  animation: servicePresent .82s cubic-bezier(.18, .82, .22, 1) forwards;
+}
+
+.servicios.show .card:nth-child(1) { animation-delay: .08s; }
+.servicios.show .card:nth-child(2) { animation-delay: .16s; }
+.servicios.show .card:nth-child(3) { animation-delay: .24s; }
+.servicios.show .card:nth-child(4) { animation-delay: .32s; }
+.servicios.show .card:nth-child(5) { animation-delay: .40s; }
+.servicios.show .card:nth-child(6) { animation-delay: .48s; }
+.servicios.show .card:nth-child(7) { animation-delay: .56s; }
+.servicios.show .card:nth-child(8) { animation-delay: .64s; }
+.servicios.show .card:nth-child(9) { animation-delay: .72s; }
+.servicios.show .card:nth-child(10) { animation-delay: .80s; }
+.servicios.show .card:nth-child(11) { animation-delay: .88s; }
+.servicios.show .card:nth-child(12) { animation-delay: .96s; }
 }
 
 .card {
@@ -576,6 +707,7 @@ main {
   letter-spacing: .08em;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
   backdrop-filter: blur(12px);
+  animation: softPulse 3.8s ease-in-out infinite;
 }
 
 .card::after {
@@ -809,6 +941,12 @@ main {
   background: linear-gradient(135deg, rgba(185, 130, 84, .16), rgba(169, 93, 108, .10));
   color: var(--gold);
   font-size: 22px;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.mvv-card:hover i {
+  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(135deg, rgba(185, 130, 84, .22), rgba(169, 93, 108, .16));
 }
 
 .mvv-card h3 {
@@ -946,7 +1084,7 @@ main {
   position: relative;
   overflow: hidden;
   margin-top: -1px;
-  padding: clamp(70px, 7vw, 104px) clamp(18px, 5vw, 72px) 34px;
+  padding: clamp(70px, 7vw, 104px) 0 34px;
   background: var(--page-bg);
   color: var(--white);
 }
@@ -963,14 +1101,16 @@ main {
 
 .footer-grid {
   position: relative;
-  width: min(1160px, 100%);
+  width: 100%;
   display: grid;
   grid-template-columns: .95fr 1.32fr .88fr;
   gap: 0;
   margin: 0 auto;
   align-items: stretch;
   border: 1px solid rgba(239, 200, 143, .16);
-  border-radius: var(--radius);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
   background:
     linear-gradient(135deg, rgba(70, 42, 55, .98) 0%, rgba(35, 22, 30, .99) 46%, rgba(19, 13, 17, .99) 100%);
   color: var(--white);
@@ -995,6 +1135,7 @@ main {
   background:
     linear-gradient(90deg, rgba(239, 200, 143, .08), transparent 32%, rgba(255, 255, 255, .035) 68%, transparent),
     linear-gradient(180deg, rgba(255, 255, 255, .07), transparent 40%);
+  animation: footerGlow 8s ease-in-out infinite alternate;
 }
 
 .footer-brand,
@@ -1003,7 +1144,7 @@ main {
   position: relative;
   z-index: 1;
   min-height: 100%;
-  padding: clamp(28px, 4vw, 44px);
+  padding: clamp(30px, 4vw, 48px) clamp(22px, 5vw, 72px);
 }
 
 .contacto-datos,
@@ -1116,6 +1257,12 @@ main {
   background: rgba(230, 189, 139, .13);
   color: var(--gold-2);
   font-size: 13px;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.contacto-datos p:hover i {
+  transform: translateY(-2px);
+  background: rgba(230, 189, 139, .20);
 }
 
 .footer-social-clean {
