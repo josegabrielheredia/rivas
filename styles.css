@@ -200,7 +200,7 @@ textarea:focus-visible {
    HERO
 ========================= */
 .hero {
-  min-height: 76svh;
+  min-height: 64svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -225,8 +225,8 @@ textarea:focus-visible {
   right: 0;
   bottom: -1px;
   z-index: 1;
-  height: 118px;
-  background: linear-gradient(180deg, rgba(90, 55, 65, 0) 0%, rgba(90, 55, 65, .30) 38%, rgba(234, 212, 216, .82) 76%, #f7e9eb 100%);
+  height: 44px;
+  background: linear-gradient(180deg, rgba(45, 28, 38, 0) 0%, rgba(45, 28, 38, .14) 44%, rgba(255, 248, 244, .96) 100%);
 }
 
 .hero-header {
@@ -379,7 +379,7 @@ textarea:focus-visible {
   z-index: 2;
   width: min(var(--max), 100%);
   margin: 0 auto;
-  padding: clamp(58px, 7vw, 98px) clamp(20px, 5vw, 72px) clamp(68px, 7vw, 92px);
+  padding: clamp(38px, 5vw, 66px) clamp(20px, 5vw, 72px) clamp(38px, 4.8vw, 56px);
 }
 
 .hero-content h1 {
@@ -487,12 +487,11 @@ textarea:focus-visible {
    SERVICIOS
 ========================= */
 .servicios {
-  margin-top: -44px;
-  padding: clamp(78px, 7vw, 104px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
+  margin-top: 0;
+  padding: clamp(32px, 3.6vw, 48px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
   background:
-    linear-gradient(90deg, rgba(255, 248, 244, .30), rgba(255, 255, 255, 0) 18%, rgba(255, 255, 255, 0) 82%, rgba(255, 248, 244, .30)),
-    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .18), transparent 28%),
-    linear-gradient(180deg, #ead4d8 0%, #f7e9eb 22%, #fff8f4 50%, #f3dde1 100%);
+    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .12), transparent 30%),
+    linear-gradient(180deg, #fff8f4 0%, #fffaf7 48%, #f6e7ea 100%);
   z-index: 2;
 }
 
@@ -597,7 +596,7 @@ textarea:focus-visible {
 .cta-band {
   padding: 0 clamp(18px, 5vw, 72px);
   background:
-    linear-gradient(180deg, #f3dde1 0%, #eed6db 100%);
+    linear-gradient(180deg, #f6e7ea 0%, #eed6db 100%);
 }
 
 .cta-inner {
