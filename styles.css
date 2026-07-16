@@ -288,23 +288,22 @@ main {
   align-items: center;
   justify-content: center;
   min-width: max-content;
-  width: clamp(236px, 21vw, 340px);
-  height: clamp(92px, 8.5vw, 126px);
+  width: clamp(220px, 20vw, 320px);
+  height: clamp(84px, 7.8vw, 116px);
   gap: 0;
-  padding: clamp(8px, 1vw, 12px) clamp(12px, 1.4vw, 18px);
-  border: 1px solid rgba(255, 255, 255, .10);
-  border-radius: 2px;
-  background: #050405;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .38);
-  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
   font-weight: 700;
-  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+  transition: transform .25s ease, filter .25s ease;
 }
 
 .logo:hover {
   transform: translateY(-1px);
-  border-color: rgba(240, 199, 140, .42);
-  background: #080608;
+  filter: brightness(1.08);
 }
 
 .logo img {
@@ -313,7 +312,8 @@ main {
   object-fit: cover;
   object-position: center 48%;
   border-radius: 0;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .28));
+  mix-blend-mode: screen;
+  filter: brightness(1.18) contrast(1.08) saturate(1.12) drop-shadow(0 12px 22px rgba(0, 0, 0, .42));
 }
 
 .logo span {
@@ -515,20 +515,48 @@ main {
 
 .hero .btn-hero,
 .hero .btn-ghost {
+  position: relative;
   min-width: 226px;
-  min-height: 62px;
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, .76);
-  background: rgba(0, 0, 0, .10);
+  min-height: 60px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, .72);
+  background: transparent;
   color: var(--white);
-  box-shadow: none;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .18);
   backdrop-filter: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero .btn-hero::before,
+.hero .btn-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, rgba(240, 199, 140, .18), rgba(255, 255, 255, .06));
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.hero .btn-hero {
+  border-color: rgba(240, 199, 140, .88);
+}
+
+.hero .btn-ghost {
+  border-color: rgba(255, 255, 255, .62);
 }
 
 .hero .btn-hero:hover,
 .hero .btn-ghost:hover {
-  background: rgba(255, 255, 255, .12);
+  background: transparent;
   border-color: var(--gold-2);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, .24);
+}
+
+.hero .btn-hero:hover::before,
+.hero .btn-ghost:hover::before {
+  opacity: 1;
 }
 
 /* =========================
@@ -1281,8 +1309,8 @@ main {
   .logo {
     justify-content: center;
     justify-self: center;
-    width: min(320px, 68vw);
-    height: 108px;
+    width: min(300px, 68vw);
+    height: 102px;
   }
 
   .nav {
@@ -1377,16 +1405,17 @@ main {
   }
 
   .logo {
-    width: min(250px, 72vw);
-    height: 84px;
+    width: min(246px, 72vw);
+    height: 82px;
     justify-content: center;
-    padding: 8px 12px;
-    border: 1px solid rgba(255, 255, 255, .10);
-    background: #050405;
+    padding: 0;
+    border: 0;
+    background: transparent;
   }
 
   .logo img {
     width: 100%;
+    height: 100%;
   }
 
   .logo span {
