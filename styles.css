@@ -921,22 +921,24 @@ textarea:focus-visible {
   .nav {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
     border: 0;
     background: transparent;
     padding: 0;
   }
 
   .nav a {
-    min-height: 38px;
+    min-width: 0;
+    min-height: 35px;
     display: grid;
     place-items: center;
     border: 1px solid rgba(255, 255, 255, .13);
     border-radius: 999px;
     background: rgba(255, 255, 255, .075);
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: 7px 3px;
+    font-size: 10px;
+    line-height: 1;
   }
 
   .nav a::after {
@@ -1042,7 +1044,7 @@ textarea:focus-visible {
 
 @media (max-width: 430px) {
   .nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .hero-content h1 {
