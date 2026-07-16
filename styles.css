@@ -985,7 +985,7 @@ textarea:focus-visible {
   }
 
   .hero {
-    min-height: auto;
+    min-height: 100svh;
     background-position: 58% center;
   }
 
@@ -1044,7 +1044,7 @@ textarea:focus-visible {
   }
 
   .hero-content {
-    padding: 34px 18px 46px;
+    padding: 42px 18px 82px;
     text-align: center;
   }
 
