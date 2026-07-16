@@ -386,40 +386,6 @@ textarea:focus-visible {
   background: rgba(255, 255, 255, .16);
 }
 
-.hero-stats {
-  width: min(620px, 100%);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-top: 46px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, .16);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, .12);
-  box-shadow: 0 18px 52px rgba(0, 0, 0, .18);
-  backdrop-filter: blur(14px);
-}
-
-.hero-stats div {
-  padding: 18px;
-  background: rgba(255, 255, 255, .07);
-}
-
-.hero-stats strong {
-  display: block;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(26px, 4vw, 36px);
-  line-height: 1;
-}
-
-.hero-stats span {
-  display: block;
-  margin-top: 6px;
-  color: rgba(255, 255, 255, .76);
-  font-size: 13px;
-  font-weight: 700;
-}
-
 /* =========================
    SECTION HEADINGS
 ========================= */
@@ -967,10 +933,6 @@ textarea:focus-visible {
   .btn-hero,
   .btn-ghost {
     width: min(100%, 330px);
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr;
   }
 
   .servicios,
