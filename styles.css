@@ -17,7 +17,10 @@
   --green: #2f7d59;
   --white: #ffffff;
   --line: rgba(93, 66, 75, .14);
+  --line-strong: rgba(93, 66, 75, .22);
   --glass: rgba(255, 255, 255, .74);
+  --surface: rgba(255, 255, 255, .86);
+  --surface-soft: rgba(255, 248, 244, .72);
   --shadow-soft: 0 18px 48px rgba(55, 35, 43, .11);
   --shadow-strong: 0 28px 82px rgba(24, 17, 22, .26);
   --radius: 8px;
@@ -45,6 +48,8 @@ body {
   color: var(--ink);
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 img,
@@ -201,6 +206,7 @@ textarea:focus-visible {
   overflow: hidden;
   background: url("fondo.jpg") center 39% / cover no-repeat;
   color: var(--white);
+  isolation: isolate;
 }
 
 .hero-overlay {
@@ -238,6 +244,17 @@ textarea:focus-visible {
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
+}
+
+.hero-header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: min(520px, 52vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(239, 200, 143, .32), transparent);
+  transform: translateX(-50%);
 }
 
 .logo {
@@ -295,7 +312,7 @@ textarea:focus-visible {
   font-weight: 700;
   white-space: nowrap;
   text-shadow: 0 8px 22px rgba(0, 0, 0, .62);
-  transition: color .2s ease, transform .2s ease;
+  transition: color .2s ease, transform .2s ease, text-shadow .2s ease;
 }
 
 .nav a i {
@@ -317,6 +334,7 @@ textarea:focus-visible {
 .nav a:hover {
   color: var(--white);
   transform: translateY(-1px);
+  text-shadow: 0 10px 28px rgba(239, 200, 143, .32), 0 8px 22px rgba(0, 0, 0, .62);
 }
 
 .nav a:hover::after {
@@ -360,7 +378,6 @@ textarea:focus-visible {
   position: relative;
   z-index: 2;
   width: min(var(--max), 100%);
-  margin: auto;
   margin: 0 auto;
   padding: clamp(58px, 7vw, 98px) clamp(20px, 5vw, 72px) clamp(68px, 7vw, 92px);
 }
@@ -473,6 +490,7 @@ textarea:focus-visible {
   margin-top: -44px;
   padding: clamp(78px, 7vw, 104px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
   background:
+    linear-gradient(90deg, rgba(255, 248, 244, .30), rgba(255, 255, 255, 0) 18%, rgba(255, 255, 255, 0) 82%, rgba(255, 248, 244, .30)),
     radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .18), transparent 28%),
     linear-gradient(180deg, #ead4d8 0%, #f7e9eb 22%, #fff8f4 50%, #f3dde1 100%);
   z-index: 2;
@@ -488,14 +506,14 @@ textarea:focus-visible {
 
 .card {
   position: relative;
-  min-height: 336px;
+  min-height: 352px;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, .78);
-  box-shadow: 0 18px 44px rgba(59, 39, 47, .13);
+  border: 1px solid rgba(255, 255, 255, .86);
+  box-shadow: 0 18px 44px rgba(59, 39, 47, .13), inset 0 1px 0 rgba(255, 255, 255, .22);
   isolation: isolate;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
 
 .card::before {
@@ -514,8 +532,9 @@ textarea:focus-visible {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(23, 17, 20, .00) 22%, rgba(23, 17, 20, .88) 100%),
-    linear-gradient(90deg, rgba(23, 17, 20, .24), transparent 58%);
+    linear-gradient(180deg, rgba(23, 17, 20, .03) 0%, rgba(23, 17, 20, .08) 38%, rgba(23, 17, 20, .88) 100%),
+    linear-gradient(90deg, rgba(23, 17, 20, .24), transparent 58%),
+    linear-gradient(0deg, rgba(192, 139, 92, .18), transparent 42%);
   transition: opacity .3s ease;
 }
 
@@ -530,6 +549,7 @@ textarea:focus-visible {
 
 .card:hover {
   transform: translateY(-7px);
+  border-color: rgba(239, 200, 143, .58);
   box-shadow: 0 28px 70px rgba(55, 35, 43, .24);
 }
 
@@ -545,7 +565,7 @@ textarea:focus-visible {
   right: 0;
   bottom: 0;
   z-index: 2;
-  padding: 23px;
+  padding: 24px 22px;
   color: var(--white);
 }
 
@@ -554,7 +574,7 @@ textarea:focus-visible {
   margin-bottom: 8px;
   border: 1px solid rgba(255, 255, 255, .24);
   border-radius: 999px;
-  background: rgba(255, 255, 255, .13);
+  background: rgba(255, 255, 255, .15);
   padding: 5px 10px;
   font-size: 11px;
   font-weight: 800;
@@ -576,10 +596,12 @@ textarea:focus-visible {
 ========================= */
 .cta-band {
   padding: 0 clamp(18px, 5vw, 72px);
-  background: #f3dde1;
+  background:
+    linear-gradient(180deg, #f3dde1 0%, #eed6db 100%);
 }
 
 .cta-inner {
+  position: relative;
   width: min(var(--max), 100%);
   margin: 0 auto;
   display: flex;
@@ -590,10 +612,24 @@ textarea:focus-visible {
   border-radius: var(--radius);
   padding: clamp(26px, 4vw, 42px);
   background:
-    linear-gradient(135deg, rgba(66, 40, 55, .97), rgba(23, 17, 20, .97)),
+    linear-gradient(135deg, rgba(74, 44, 58, .97), rgba(25, 16, 21, .98)),
     url("footer.jpg") center / cover;
   color: var(--white);
   box-shadow: var(--shadow-strong);
+  overflow: hidden;
+}
+
+.cta-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(239, 200, 143, .18), transparent 35%, rgba(236, 184, 195, .12));
+}
+
+.cta-inner > * {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-inner h2 {
@@ -611,7 +647,8 @@ textarea:focus-visible {
 ========================= */
 .nosotros {
   padding: clamp(76px, 9vw, 108px) clamp(18px, 5vw, 72px);
-  background: linear-gradient(180deg, #f3dde1 0%, #fff8f4 100%);
+  background:
+    linear-gradient(180deg, #eed6db 0%, #fff8f4 100%);
 }
 
 .about-layout {
@@ -645,10 +682,19 @@ textarea:focus-visible {
   justify-content: flex-start;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255, 255, 255, .90), rgba(255, 250, 247, .78));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(255, 250, 247, .78));
   padding: 28px 22px;
   box-shadow: 0 16px 38px rgba(55, 35, 43, .09);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.mvv-card::before {
+  content: "";
+  width: 42px;
+  height: 2px;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, var(--gold-2), rgba(166, 91, 106, .18));
 }
 
 .mvv-card:hover {
@@ -662,7 +708,7 @@ textarea:focus-visible {
   width: 54px;
   height: 54px;
   place-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(185, 130, 84, .18), rgba(169, 93, 108, .14));
   color: var(--gold);
@@ -697,11 +743,12 @@ textarea:focus-visible {
   display: grid;
   gap: 14px;
   margin: 0 auto 48px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, .92);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(255, 250, 247, .88));
   padding: clamp(18px, 4vw, 28px);
-  box-shadow: 0 18px 50px rgba(55, 35, 43, .10);
+  box-shadow: 0 22px 60px rgba(55, 35, 43, .13);
 }
 
 .comment-form input,
@@ -772,11 +819,11 @@ textarea:focus-visible {
 }
 
 .comment {
-  border: 1px solid rgba(185, 130, 84, .16);
+  border: 1px solid rgba(185, 130, 84, .18);
   border-left: 4px solid var(--gold);
   border-radius: var(--radius);
-  background: var(--white);
-  padding: 20px;
+  background: rgba(255, 255, 255, .92);
+  padding: 20px 22px;
   box-shadow: var(--shadow-soft);
 }
 
@@ -832,11 +879,12 @@ textarea:focus-visible {
   gap: clamp(22px, 4vw, 44px);
   margin: 0 auto;
   align-items: start;
-  border: 1px solid rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .15);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, .045);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .035));
   padding: clamp(24px, 4vw, 38px);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .26);
+  box-shadow: 0 26px 78px rgba(0, 0, 0, .30);
   backdrop-filter: blur(10px);
 }
 
