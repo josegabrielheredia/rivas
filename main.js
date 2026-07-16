@@ -74,13 +74,30 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {}
 
   /* ================================
-     HERO TEXTO ESTABLE
+     HERO TEXTO ANIMADO
   ================================ */
   try {
     const heroTitle = document.querySelector(".hero-content h1, .hero-content h2");
 
     if (heroTitle) {
+      const textos = [
+        heroTitle.textContent.trim(),
+        "Realza tu belleza natural",
+        "Belleza, elegancia y cuidado",
+        "Tu espacio de bienestar"
+      ];
+      let i = 0;
+
       heroTitle.classList.add("text-show");
+      setInterval(() => {
+        i = (i + 1) % textos.length;
+        heroTitle.classList.remove("text-show");
+
+        setTimeout(() => {
+          heroTitle.textContent = textos[i];
+          heroTitle.classList.add("text-show");
+        }, 220);
+      }, 4200);
     }
   } catch (e) {}
 
