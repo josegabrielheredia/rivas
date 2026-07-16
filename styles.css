@@ -238,7 +238,7 @@ main {
    HERO
 ========================= */
 .hero {
-  min-height: 70svh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -252,8 +252,8 @@ main {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(90deg, rgba(13, 8, 11, .96) 0%, rgba(37, 22, 30, .70) 45%, rgba(37, 22, 30, .22) 100%),
-    linear-gradient(180deg, rgba(13, 8, 11, .14) 0%, rgba(48, 28, 39, .56) 72%, rgba(35, 21, 29, .26) 100%);
+    linear-gradient(180deg, rgba(10, 8, 12, .56) 0%, rgba(10, 8, 12, .50) 48%, rgba(10, 8, 12, .78) 100%),
+    linear-gradient(90deg, rgba(10, 8, 12, .86) 0%, rgba(10, 8, 12, .50) 48%, rgba(10, 8, 12, .62) 100%);
 }
 
 .hero::after {
@@ -264,18 +264,18 @@ main {
 .hero-header {
   position: relative;
   z-index: 5;
-  width: min(calc(100% - 44px), 1180px);
-  margin: 18px auto 0;
+  width: min(calc(100% - 72px), 1720px);
+  margin: 24px auto 0;
   display: grid;
-  grid-template-columns: minmax(210px, auto) 1fr auto;
+  grid-template-columns: minmax(240px, 360px) 1fr auto;
   align-items: center;
-  gap: clamp(12px, 2vw, 24px);
-  padding: 12px;
-  border: 1px solid rgba(255, 255, 255, .16);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(23, 15, 20, .62), rgba(23, 15, 20, .32));
-  box-shadow: 0 22px 64px rgba(0, 0, 0, .22), inset 0 1px 0 rgba(255, 255, 255, .10);
-  backdrop-filter: blur(18px);
+  gap: clamp(20px, 3vw, 56px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .hero-header::after {
@@ -286,48 +286,52 @@ main {
 .logo {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-width: max-content;
-  gap: 12px;
-  padding: 4px 8px 4px 4px;
+  width: clamp(236px, 21vw, 340px);
+  height: clamp(92px, 8.5vw, 126px);
+  gap: 0;
+  padding: clamp(8px, 1vw, 12px) clamp(12px, 1.4vw, 18px);
   border: 1px solid rgba(255, 255, 255, .10);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, .045);
+  border-radius: 2px;
+  background: #050405;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .38);
+  overflow: hidden;
   font-weight: 700;
   transition: transform .25s ease, background .25s ease, border-color .25s ease;
 }
 
 .logo:hover {
   transform: translateY(-1px);
-  border-color: rgba(239, 200, 143, .30);
-  background: rgba(255, 255, 255, .075);
+  border-color: rgba(240, 199, 140, .42);
+  background: #080608;
 }
 
 .logo img {
-  width: clamp(44px, 4.7vw, 56px);
-  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  border-radius: 0;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .28));
 }
 
 .logo span {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(14px, 1.35vw, 16px);
-  line-height: 1.08;
-  letter-spacing: .01em;
-  text-shadow: 0 8px 24px rgba(0, 0, 0, .50);
+  display: none;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: clamp(22px, 4vw, 74px);
   width: auto;
   max-width: 100%;
   justify-self: center;
-  border: 1px solid rgba(255, 255, 255, .10);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, .045);
-  padding: 5px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
 }
 
 .nav a {
@@ -336,22 +340,19 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  border-radius: 6px;
-  padding: 8px clamp(9px, 1.1vw, 13px);
-  color: rgba(255, 255, 255, .88);
-  font-size: 11px;
-  font-weight: 700;
+  gap: 0;
+  border-radius: 0;
+  padding: 8px 0;
+  color: rgba(255, 255, 255, .94);
+  font-size: clamp(16px, 1.24vw, 22px);
+  font-weight: 500;
   white-space: nowrap;
-  text-shadow: none;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, .70);
   transition: color .2s ease, transform .2s ease, background .2s ease;
 }
 
 .nav a i {
-  display: inline-block;
-  color: var(--gold-2);
-  font-size: 12px;
-  line-height: 1;
+  display: none;
 }
 
 .nav a::after {
@@ -360,36 +361,37 @@ main {
 }
 
 .nav a:hover {
-  color: var(--white);
-  background: rgba(255, 255, 255, .10);
+  color: var(--gold-2);
+  background: transparent;
   transform: translateY(-1px);
 }
 
 .hero-redes {
   display: flex;
   justify-self: end;
-  gap: 4px;
+  gap: clamp(14px, 2.3vw, 28px);
 }
 
 .hero-redes a,
 .footer-social-clean a {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 50px;
+  height: 50px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, .11);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c578f2, #8c49c9);
   color: var(--white);
-  text-shadow: none;
+  font-size: 19px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, .36);
+  box-shadow: 0 16px 34px rgba(90, 40, 138, .36), inset 0 1px 0 rgba(255, 255, 255, .30);
   transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
 }
 
-.hero-redes a:hover,
-.footer-social-clean a:hover {
+.hero-redes a:hover {
   border-color: rgba(239, 200, 143, .45);
-  background: linear-gradient(135deg, var(--gold-2), #efbec8);
-  color: var(--ink);
+  background: linear-gradient(135deg, #e7a4ff, #a258df);
+  color: var(--white);
   transform: translateY(-3px);
 }
 
@@ -399,12 +401,25 @@ main {
   text-shadow: none;
 }
 
+.footer-social-clean a:hover {
+  border-color: rgba(239, 200, 143, .45);
+  background: linear-gradient(135deg, var(--gold-2), #efbec8);
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
   width: min(var(--max), 100%);
   margin: 0 auto;
-  padding: clamp(54px, 6.6vw, 92px) clamp(20px, 5vw, 72px) clamp(54px, 6vw, 76px);
+  min-height: calc(100svh - 146px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(56px, 6vw, 110px) clamp(20px, 5vw, 72px) clamp(70px, 8vw, 124px);
 }
 
 .hero-content .eyebrow,
@@ -416,25 +431,28 @@ main {
 }
 
 .hero-content .eyebrow {
+  justify-content: center;
   animation-delay: .02s;
 }
 
 .hero-content h1 {
   max-width: 760px;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(52px, 7.8vw, 92px);
-  line-height: .92;
+  font-family: "Great Vibes", "Playfair Display", Georgia, serif;
+  font-size: clamp(52px, 6.6vw, 92px);
+  font-weight: 400;
+  line-height: .95;
   text-wrap: balance;
   text-shadow: 0 22px 62px rgba(0, 0, 0, .50);
   animation-delay: .04s;
 }
 
 .hero-content p {
-  max-width: 620px;
-  margin-top: 24px;
+  max-width: 1100px;
+  margin: 28px auto 0;
   color: rgba(255, 255, 255, .88);
-  font-size: clamp(16px, 1.7vw, 18px);
-  line-height: 1.75;
+  font-size: clamp(16px, 1.35vw, 21px);
+  font-weight: 600;
+  line-height: 1.7;
   text-shadow: 0 10px 30px rgba(0, 0, 0, .35);
   animation-delay: .06s;
 }
@@ -443,8 +461,9 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 14px;
-  margin-top: 30px;
+  margin-top: clamp(36px, 5.2vw, 68px);
   animation-delay: .08s;
 }
 
@@ -492,6 +511,24 @@ main {
 .btn-ghost:hover {
   background: rgba(255, 255, 255, .16);
   border-color: rgba(239, 200, 143, .52);
+}
+
+.hero .btn-hero,
+.hero .btn-ghost {
+  min-width: 226px;
+  min-height: 62px;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, .76);
+  background: rgba(0, 0, 0, .10);
+  color: var(--white);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.hero .btn-hero:hover,
+.hero .btn-ghost:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: var(--gold-2);
 }
 
 /* =========================
@@ -1234,23 +1271,25 @@ main {
 @media (max-width: 1100px) {
   .hero-header {
     grid-template-columns: 1fr;
-    justify-items: stretch;
-    width: min(calc(100% - 28px), 760px);
-    border-radius: var(--radius);
-    gap: 12px;
-    padding: 12px;
-    background: linear-gradient(180deg, rgba(23, 15, 20, .66), rgba(23, 15, 20, .34));
+    justify-items: center;
+    width: min(calc(100% - 34px), 820px);
+    gap: 16px;
+    padding: 0;
+    background: transparent;
   }
 
   .logo {
     justify-content: center;
     justify-self: center;
+    width: min(320px, 68vw);
+    height: 108px;
   }
 
   .nav {
     order: 3;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 34px);
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x proximity;
@@ -1262,12 +1301,19 @@ main {
   }
 
   .nav a {
-    min-width: 112px;
+    min-width: max-content;
     scroll-snap-align: start;
+    font-size: clamp(14px, 2.1vw, 18px);
   }
 
   .hero-redes {
     justify-self: center;
+    gap: 14px;
+  }
+
+  .hero-redes a {
+    width: 44px;
+    height: 44px;
   }
 
   .servicios-grid {
@@ -1301,12 +1347,13 @@ main {
 
   .hero {
     min-height: 100svh;
-    background-position: 57% center;
+    background-position: 54% center;
   }
 
   .hero-overlay {
     background:
-      linear-gradient(180deg, rgba(13, 9, 12, .82) 0%, rgba(13, 9, 12, .56) 42%, rgba(13, 9, 12, .76) 100%);
+      linear-gradient(180deg, rgba(10, 8, 12, .74) 0%, rgba(10, 8, 12, .48) 43%, rgba(10, 8, 12, .82) 100%),
+      linear-gradient(90deg, rgba(10, 8, 12, .70), rgba(10, 8, 12, .30), rgba(10, 8, 12, .64));
   }
 
   .hero::after {
@@ -1315,12 +1362,13 @@ main {
   }
 
   .hero-header {
-    margin-top: 12px;
-    padding: 10px;
-    border-radius: var(--radius);
-    border-color: rgba(255, 255, 255, .11);
-    background: rgba(23, 15, 20, .38);
-    box-shadow: 0 18px 48px rgba(0, 0, 0, .18);
+    width: min(calc(100% - 28px), 430px);
+    margin-top: 14px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .hero-header::after {
@@ -1329,15 +1377,16 @@ main {
   }
 
   .logo {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 2px 0;
-    border: 0;
-    background: transparent;
+    width: min(250px, 72vw);
+    height: 84px;
+    justify-content: center;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: #050405;
   }
 
   .logo img {
-    width: 50px;
+    width: 100%;
   }
 
   .logo span {
@@ -1352,36 +1401,33 @@ main {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 5px;
+    gap: 2px;
     overflow: visible;
     scroll-snap-type: none;
-    border-color: rgba(255, 255, 255, .12);
-    background: rgba(255, 255, 255, .04);
-    padding: 5px;
+    border: 0;
+    background: transparent;
+    padding: 0;
   }
 
   .nav a {
     min-width: 0;
-    min-height: 48px;
-    display: grid;
-    grid-template-rows: 17px auto;
-    gap: 4px;
+    min-height: 36px;
+    display: flex;
+    gap: 0;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, .16);
-    border-radius: 6px;
-    background: rgba(255, 255, 255, .055);
-    padding: 6px 3px;
-    font-size: 9px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 6px 2px;
+    font-size: 10px;
+    font-weight: 600;
     line-height: 1;
-    text-shadow: none;
-    backdrop-filter: blur(8px);
+    text-shadow: 0 4px 14px rgba(0, 0, 0, .72);
+    backdrop-filter: none;
   }
 
   .nav a i {
-    display: block;
-    color: var(--gold-2);
-    font-size: 14px;
-    line-height: 1;
+    display: none;
   }
 
   .nav a span {
@@ -1397,11 +1443,11 @@ main {
   }
 
   .hero-content {
-    min-height: calc(100svh - 118px);
+    min-height: calc(100svh - 142px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 30px 18px 72px;
+    padding: 24px 20px 58px;
     text-align: center;
   }
 
@@ -1418,24 +1464,35 @@ main {
 
   .hero-content h1 {
     margin: 0 auto;
-    font-size: clamp(42px, 12.6vw, 60px);
+    max-width: 360px;
+    font-size: clamp(46px, 14.4vw, 68px);
   }
 
   .hero-content p {
     margin-left: auto;
     margin-right: auto;
     margin-top: 18px;
+    max-width: 340px;
+    font-size: 14px;
+    font-weight: 600;
     line-height: 1.62;
   }
 
   .hero-actions {
     justify-content: center;
-    margin-top: 28px;
+    width: 100%;
+    margin-top: 32px;
   }
 
   .btn-hero,
   .btn-ghost {
     width: min(100%, 330px);
+  }
+
+  .hero .btn-hero,
+  .hero .btn-ghost {
+    min-height: 52px;
+    min-width: 0;
   }
 
   .servicios,
@@ -1602,11 +1659,11 @@ main {
 
   .nav a {
     min-width: 0;
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .hero-content h1 {
-    font-size: 42px;
+    font-size: clamp(44px, 13.4vw, 58px);
   }
 
   .section-heading h2,
