@@ -2,20 +2,22 @@
    VARIABLES
 ========================= */
 :root {
-  --ink: #181317;
-  --ink-2: #30262c;
-  --muted: #6d6268;
-  --paper: #fffaf8;
-  --soft: #f7eef0;
-  --cream: #fbf6ec;
-  --gold: #c08b5c;
-  --gold-2: #e2bb8c;
-  --rose: #b86b77;
-  --plum: #48313f;
+  --ink: #171114;
+  --ink-2: #33242b;
+  --muted: #716268;
+  --paper: #fff8f5;
+  --soft: #f6eaec;
+  --cream: #fff2e2;
+  --gold: #b98254;
+  --gold-2: #e6bd8b;
+  --rose: #a95d6c;
+  --plum: #422837;
   --green: #2f7d59;
   --white: #ffffff;
-  --shadow-soft: 0 16px 40px rgba(44, 31, 38, .10);
-  --shadow-strong: 0 24px 70px rgba(24, 19, 23, .24);
+  --line: rgba(93, 66, 75, .14);
+  --glass: rgba(255, 255, 255, .74);
+  --shadow-soft: 0 18px 48px rgba(55, 35, 43, .11);
+  --shadow-strong: 0 28px 82px rgba(24, 17, 22, .26);
   --radius: 8px;
   --max: 1180px;
 }
@@ -37,7 +39,8 @@ html {
 body {
   min-width: 320px;
   overflow-x: hidden;
-  background: var(--paper);
+  background:
+    linear-gradient(180deg, #fffaf7 0%, var(--paper) 42%, #fbf0f1 100%);
   color: var(--ink);
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
@@ -106,7 +109,7 @@ textarea:focus-visible {
   content: "";
   width: 34px;
   height: 1px;
-  background: currentColor;
+  background: linear-gradient(90deg, currentColor, transparent);
 }
 
 .anim {
@@ -191,11 +194,11 @@ textarea:focus-visible {
    HERO
 ========================= */
 .hero {
-  min-height: 100svh;
+  min-height: 88svh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: url("fondo.jpg") center 42% / cover no-repeat;
+  background: url("fondo.jpg") center 40% / cover no-repeat;
   color: var(--white);
 }
 
@@ -204,9 +207,9 @@ textarea:focus-visible {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(90deg, rgba(13, 9, 12, .88) 0%, rgba(13, 9, 12, .58) 45%, rgba(13, 9, 12, .20) 100%),
-    linear-gradient(180deg, rgba(13, 9, 12, .32) 0%, rgba(13, 9, 12, .88) 100%),
-    radial-gradient(circle at 72% 18%, rgba(226, 187, 140, .36), transparent 35%);
+    linear-gradient(90deg, rgba(16, 9, 14, .90) 0%, rgba(16, 9, 14, .58) 48%, rgba(16, 9, 14, .24) 100%),
+    linear-gradient(180deg, rgba(16, 9, 14, .34) 0%, rgba(16, 9, 14, .88) 100%),
+    radial-gradient(circle at 72% 18%, rgba(230, 189, 139, .26), transparent 36%);
 }
 
 .hero::after {
@@ -216,8 +219,8 @@ textarea:focus-visible {
   right: 0;
   bottom: -1px;
   z-index: 1;
-  height: 110px;
-  background: linear-gradient(180deg, transparent, var(--paper));
+  height: 96px;
+  background: linear-gradient(180deg, transparent, #fffaf7 86%);
 }
 
 .hero-header {
@@ -230,8 +233,8 @@ textarea:focus-visible {
   align-items: center;
   gap: 24px;
   padding: 18px clamp(18px, 5vw, 72px);
-  border-bottom: 1px solid rgba(255, 255, 255, .13);
-  background: rgba(17, 12, 16, .30);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(18, 11, 16, .38);
   backdrop-filter: blur(14px);
 }
 
@@ -321,22 +324,22 @@ textarea:focus-visible {
   z-index: 2;
   width: min(var(--max), 100%);
   margin: auto;
-  padding: clamp(64px, 9vw, 120px) clamp(20px, 5vw, 72px) 130px;
+  padding: clamp(72px, 9vw, 124px) clamp(20px, 5vw, 72px) 104px;
 }
 
 .hero-content h1 {
-  max-width: 780px;
+  max-width: 760px;
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(44px, 8vw, 86px);
   line-height: .96;
   text-wrap: balance;
-  text-shadow: 0 20px 60px rgba(0, 0, 0, .46);
+  text-shadow: 0 22px 62px rgba(0, 0, 0, .50);
 }
 
 .hero-content p {
-  max-width: 680px;
+  max-width: 650px;
   margin-top: 24px;
-  color: rgba(255, 255, 255, .86);
+  color: rgba(255, 255, 255, .88);
   font-size: clamp(16px, 2vw, 19px);
   line-height: 1.75;
   text-shadow: 0 10px 30px rgba(0, 0, 0, .35);
@@ -360,14 +363,15 @@ textarea:focus-visible {
   border-radius: 999px;
   padding: 13px 26px;
   font-weight: 800;
+  letter-spacing: .01em;
   transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
 }
 
 .btn-hero {
   border: 1px solid rgba(255, 255, 255, .38);
-  background: linear-gradient(135deg, var(--gold-2), #f0bec8);
+  background: linear-gradient(135deg, #efc995 0%, #ecb8c3 100%);
   color: #1b1518;
-  box-shadow: 0 18px 42px rgba(192, 139, 92, .30);
+  box-shadow: 0 18px 42px rgba(178, 116, 80, .30);
 }
 
 .btn-ghost {
@@ -391,7 +395,7 @@ textarea:focus-visible {
 ========================= */
 .section-heading {
   width: min(760px, 100%);
-  margin: 0 auto clamp(34px, 5vw, 58px);
+  margin: 0 auto clamp(38px, 5vw, 62px);
   text-align: center;
 }
 
@@ -403,7 +407,7 @@ textarea:focus-visible {
   content: "";
   width: 34px;
   height: 1px;
-  background: currentColor;
+  background: linear-gradient(90deg, transparent, currentColor);
 }
 
 .section-heading h2,
@@ -428,9 +432,9 @@ textarea:focus-visible {
    SERVICIOS
 ========================= */
 .servicios {
-  padding: clamp(72px, 10vw, 118px) clamp(18px, 5vw, 72px);
+  padding: clamp(78px, 10vw, 124px) clamp(18px, 5vw, 72px);
   background:
-    linear-gradient(180deg, var(--paper) 0%, #fff 38%, var(--soft) 100%);
+    linear-gradient(180deg, #fffaf7 0%, #fff 36%, #fbf0f1 100%);
 }
 
 .servicios-grid {
@@ -438,18 +442,29 @@ textarea:focus-visible {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 22px);
+  gap: clamp(16px, 2vw, 24px);
 }
 
 .card {
   position: relative;
-  min-height: 330px;
+  min-height: 342px;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--ink);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, .72);
+  box-shadow: 0 16px 38px rgba(59, 39, 47, .14);
   isolation: isolate;
   transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: inherit;
 }
 
 .card::after {
@@ -458,8 +473,8 @@ textarea:focus-visible {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(24, 19, 23, .04) 25%, rgba(24, 19, 23, .86) 100%),
-    linear-gradient(90deg, rgba(24, 19, 23, .34), transparent 55%);
+    linear-gradient(180deg, rgba(23, 17, 20, .02) 24%, rgba(23, 17, 20, .88) 100%),
+    linear-gradient(90deg, rgba(23, 17, 20, .34), transparent 56%);
   transition: opacity .3s ease;
 }
 
@@ -473,8 +488,8 @@ textarea:focus-visible {
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-strong);
+  transform: translateY(-7px);
+  box-shadow: 0 28px 70px rgba(55, 35, 43, .24);
 }
 
 .card:hover img,
@@ -489,16 +504,16 @@ textarea:focus-visible {
   right: 0;
   bottom: 0;
   z-index: 2;
-  padding: 22px;
+  padding: 23px;
   color: var(--white);
 }
 
 .card-content span {
   display: inline-flex;
   margin-bottom: 8px;
-  border: 1px solid rgba(255, 255, 255, .22);
+  border: 1px solid rgba(255, 255, 255, .24);
   border-radius: 999px;
-  background: rgba(255, 255, 255, .11);
+  background: rgba(255, 255, 255, .13);
   padding: 5px 10px;
   font-size: 11px;
   font-weight: 800;
@@ -510,7 +525,7 @@ textarea:focus-visible {
 .card-content h3 {
   max-width: 94%;
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(20px, 1.45vw, 23px);
+  font-size: clamp(20px, 1.48vw, 24px);
   line-height: 1.05;
   text-shadow: 0 12px 28px rgba(0, 0, 0, .42);
 }
@@ -520,7 +535,7 @@ textarea:focus-visible {
 ========================= */
 .cta-band {
   padding: 0 clamp(18px, 5vw, 72px);
-  background: var(--soft);
+  background: #fbf0f1;
 }
 
 .cta-inner {
@@ -530,10 +545,11 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 28px;
+  border: 1px solid rgba(255, 255, 255, .10);
   border-radius: var(--radius);
   padding: clamp(26px, 5vw, 46px);
   background:
-    linear-gradient(135deg, rgba(72, 49, 63, .96), rgba(24, 19, 23, .96)),
+    linear-gradient(135deg, rgba(66, 40, 55, .97), rgba(23, 17, 20, .97)),
     url("footer.jpg") center / cover;
   color: var(--white);
   box-shadow: var(--shadow-strong);
@@ -554,7 +570,7 @@ textarea:focus-visible {
 ========================= */
 .nosotros {
   padding: clamp(86px, 10vw, 124px) clamp(18px, 5vw, 72px);
-  background: linear-gradient(180deg, var(--soft), var(--paper));
+  background: linear-gradient(180deg, #fbf0f1 0%, #fff8f5 100%);
 }
 
 .about-layout {
@@ -568,6 +584,7 @@ textarea:focus-visible {
 
 .about-copy {
   max-width: 520px;
+  padding-top: 8px;
 }
 
 .about-copy strong {
@@ -585,11 +602,11 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid rgba(192, 139, 92, .18);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, .78);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .90), rgba(255, 250, 247, .78));
   padding: 28px 22px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 38px rgba(55, 35, 43, .09);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
@@ -606,7 +623,7 @@ textarea:focus-visible {
   place-items: center;
   margin-bottom: 22px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(192, 139, 92, .18), rgba(184, 107, 119, .14));
+  background: linear-gradient(135deg, rgba(185, 130, 84, .18), rgba(169, 93, 108, .14));
   color: var(--gold);
   font-size: 22px;
 }
@@ -631,8 +648,8 @@ textarea:focus-visible {
 .comentarios {
   padding: clamp(78px, 10vw, 118px) clamp(18px, 5vw, 72px);
   background:
-    linear-gradient(180deg, var(--paper), #fff),
-    radial-gradient(circle at 12% 20%, rgba(47, 125, 89, .12), transparent 35%);
+    linear-gradient(180deg, #fff8f5, #fff),
+    linear-gradient(135deg, rgba(47, 125, 89, .05), transparent 42%);
   text-align: center;
 }
 
@@ -641,11 +658,11 @@ textarea:focus-visible {
   display: grid;
   gap: 14px;
   margin: 0 auto 48px;
-  border: 1px solid rgba(192, 139, 92, .18);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, .82);
+  background: rgba(255, 255, 255, .92);
   padding: clamp(18px, 4vw, 28px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 18px 50px rgba(55, 35, 43, .10);
 }
 
 .comment-form input,
@@ -716,6 +733,7 @@ textarea:focus-visible {
 }
 
 .comment {
+  border: 1px solid rgba(185, 130, 84, .16);
   border-left: 4px solid var(--gold);
   border-radius: var(--radius);
   background: var(--white);
@@ -744,7 +762,7 @@ textarea:focus-visible {
 .contacto-footer {
   padding: clamp(70px, 9vw, 100px) clamp(18px, 5vw, 72px) 34px;
   background:
-    linear-gradient(90deg, rgba(18, 13, 17, .92), rgba(18, 13, 17, .78)),
+    linear-gradient(90deg, rgba(18, 11, 16, .94), rgba(18, 11, 16, .80)),
     url("footer.jpg") center / cover no-repeat;
   color: var(--white);
 }
