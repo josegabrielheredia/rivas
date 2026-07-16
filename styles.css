@@ -7,6 +7,8 @@
   --muted: #725f67;
   --paper: #fff8f4;
   --soft: #f7e9eb;
+  --blush: #f3dde1;
+  --wine-soft: #ead4d8;
   --cream: #fff1dc;
   --gold: #b77f51;
   --gold-2: #efc88f;
@@ -39,7 +41,7 @@ html {
 body {
   min-width: 320px;
   overflow-x: hidden;
-  background: linear-gradient(180deg, #fff9f5 0%, #fff 34%, #f8ecee 100%);
+  background: linear-gradient(180deg, #22141c 0%, #fff8f4 18%, #f3dde1 58%, #21131a 100%);
   color: var(--ink);
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
@@ -207,7 +209,7 @@ textarea:focus-visible {
   z-index: 0;
   background:
     linear-gradient(90deg, rgba(15, 9, 13, .92) 0%, rgba(27, 17, 22, .64) 48%, rgba(27, 17, 22, .28) 100%),
-    linear-gradient(180deg, rgba(15, 9, 13, .28) 0%, rgba(15, 9, 13, .86) 100%);
+    linear-gradient(180deg, rgba(15, 9, 13, .28) 0%, rgba(42, 25, 34, .76) 76%, rgba(90, 55, 65, .62) 100%);
 }
 
 .hero::after {
@@ -217,8 +219,8 @@ textarea:focus-visible {
   right: 0;
   bottom: -1px;
   z-index: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(239, 200, 143, .36), transparent);
+  height: 118px;
+  background: linear-gradient(180deg, rgba(90, 55, 65, 0) 0%, rgba(90, 55, 65, .30) 38%, rgba(234, 212, 216, .82) 76%, #f7e9eb 100%);
 }
 
 .hero-header {
@@ -468,11 +470,11 @@ textarea:focus-visible {
    SERVICIOS
 ========================= */
 .servicios {
-  margin-top: 0;
-  padding: clamp(28px, 3.8vw, 46px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
+  margin-top: -44px;
+  padding: clamp(78px, 7vw, 104px) clamp(18px, 5vw, 72px) clamp(74px, 9vw, 112px);
   background:
-    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .16), transparent 28%),
-    linear-gradient(180deg, #fff9f5 0%, #fff 38%, #f8ecee 100%);
+    radial-gradient(circle at 50% 0%, rgba(239, 200, 143, .18), transparent 28%),
+    linear-gradient(180deg, #ead4d8 0%, #f7e9eb 22%, #fff8f4 50%, #f3dde1 100%);
   z-index: 2;
 }
 
@@ -574,7 +576,7 @@ textarea:focus-visible {
 ========================= */
 .cta-band {
   padding: 0 clamp(18px, 5vw, 72px);
-  background: #f8ecee;
+  background: #f3dde1;
 }
 
 .cta-inner {
@@ -609,7 +611,7 @@ textarea:focus-visible {
 ========================= */
 .nosotros {
   padding: clamp(76px, 9vw, 108px) clamp(18px, 5vw, 72px);
-  background: linear-gradient(180deg, #f8ecee 0%, #fff8f4 100%);
+  background: linear-gradient(180deg, #f3dde1 0%, #fff8f4 100%);
 }
 
 .about-layout {
@@ -686,7 +688,7 @@ textarea:focus-visible {
 ========================= */
 .comentarios {
   padding: clamp(76px, 9vw, 108px) clamp(18px, 5vw, 72px);
-  background: linear-gradient(180deg, #fff8f4 0%, #fff 100%);
+  background: linear-gradient(180deg, #fff8f4 0%, #f8ecee 48%, #ead4d8 78%, #d8b4bd 100%);
   text-align: center;
 }
 
@@ -799,8 +801,10 @@ textarea:focus-visible {
 .contacto-footer {
   position: relative;
   overflow: hidden;
+  margin-top: -1px;
   padding: clamp(70px, 8vw, 96px) clamp(18px, 5vw, 72px) 34px;
   background:
+    linear-gradient(180deg, rgba(216, 180, 189, .96) 0%, rgba(95, 57, 70, .86) 20%, rgba(18, 11, 16, .96) 52%),
     radial-gradient(circle at 14% 18%, rgba(230, 189, 139, .18), transparent 28%),
     radial-gradient(circle at 86% 0%, rgba(169, 93, 108, .18), transparent 30%),
     linear-gradient(90deg, rgba(18, 11, 16, .96), rgba(35, 22, 29, .88)),
@@ -813,7 +817,7 @@ textarea:focus-visible {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .10), rgba(0, 0, 0, .42));
+  background: linear-gradient(180deg, rgba(255, 248, 244, .08), rgba(0, 0, 0, .40));
 }
 
 .contacto-footer > * {
